@@ -18,6 +18,9 @@ h2{
 :focus {
 outline: 0;
 }
+.jumbotron .container{
+    position: relative;
+}
 .navbar-inverse {
     background-color: #292929;
     border-color: #292929;
@@ -125,8 +128,8 @@ outline: 0;
 .jumbotron h1{
     position: absolute;
     z-index: 9;
-    top: 142px;
-    left: 105px;
+    top: -20px;
+    left: 52px;
     width: 500px;
     font-size: 32px;
     color: #fff;
