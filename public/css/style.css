@@ -116,6 +116,13 @@ outline: 0;
 .banner-img{
 	width: 99.99%;
 }
+.hover_bg{
+    background: #3489DB;
+    padding: 15px;
+}
+.hover_bg h4, .hover_bg p{
+    color: #fff;
+}
 .thumb-top{
     margin-top: -70px;
 }

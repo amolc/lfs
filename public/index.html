@@ -20,12 +20,14 @@
 
     <!-- Custom styles for this template -->
     
-    <link href="css/style.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
     <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -80,11 +82,10 @@
       
     </div>
     <section class="light-grey">
-    <a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Hover</a>
     <div class="container">
       <div class="row thumb-top">
         <div class="col-md-4 col-sm-12">
-          <div class="thumb blue">
+          <div class="thumb blue" data-toggle="tooltip" data-placement="top" title="Hooray!">
             <hr>
             <h2>Support Academic Excellence</h2>
             <p>Support the LFS establishment project in achieving school projects! </p>
@@ -122,26 +123,53 @@
       </div>
     </div>
     <div class="container">
+      <div id="science_hover" class="row">
+        <div class="col-md-12 hover_bg">
+          <div class="col-md-4">
+            <h4>In life, nothing is to be feared,everything is to be understood. Marie Curie</h4>
+          </div>
+          <div class="col-md-8">
+          <p>By transforming mystery into challenge, science adds a new dimension to life. 
+            And a new dimension opens several paths to self-fulfillment. 
+
+            Science and technology also aim to develop interest in scientific and 
+            technical progress. This is why our educational schemes are aligned with an investigative 
+            approach that fosters curiosity and creativity.
+          </p>
+        </div>
+      </div>
+<div id="lit_hover" class="row">
+  <div class="col-md-12 hover_bg">
+          <div class="col-md-4">
+            <h4>In life, nothing is to be feared,everything is to be understood. Marie Curie</h4>
+          </div>
+          <div class="col-md-8">
+          <p>By transforming mystery into challenge, science adds a new dimension to life. 
+            And a new dimension opens several paths to self-fulfillment. 
+
+            Science and technology also aim to develop interest in scientific and 
+            technical progress. This is why our educational schemes are aligned with an investigative 
+            approach that fosters curiosity and creativity.
+          </p>
+        </div>
+  </div>      
+</div>
+<div id="sport_hover" class="achieve_bg fl">
+<p><strong>Enable Vendors to achieve recognition and accolades from their own Customers for their outstanding commitment to service quality and professionalism</strong></p>
+</div>
+<div id="community_hover" class="achieve_bg fl">
+<p><strong>Enable Vendors to achieve recognition and accolades from their own Customers for their outstanding commitment to service quality and professionalism</strong></p>
+</div>
+    </div>
+    <div class="container">
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-12 tab-area tabs-hover">
-          <span class="tab-link" tabindex="1"><img src="img/science.png"><h2>SCIENCE</h2></span>
-          <span class="tab-link" tabindex="2"><img src="img/art.png"> <h2>ART</h2></span>
-          <span class="tab-link" tabindex="3"><img src="img/lite.png"> <h2>LITERATURE</h2></span>
-          <span class="tab-link" tabindex="4"><img src="img/sport.png"> <h2>SPORTS</h2></span>
-          <span class="tab-link" tabindex="5"><img src="img/community.png"> <h2>COMMUNITY</h2></span>
-
-          <article class="col-md-12 tab">
-            <h3>Tab 3</h3>
-            <p>Lorem Ipsum Dolor Sit</p>
-          </article>
-          <article class="col-md-12 tab">
-            <h3>Tab 2</h3>
-            <p>Lorem Ipsum Dolor Sit</p>
-          </article>
-          <article class="col-md-12 tab">
-            <h3>I really just made this so I could say I have 4 instead of 3. Although hover can be used for more than you'd think, it's very impractical.</h3>
-          </article>
+          <span class="tab-link" tabindex="1" id="science"><img src="img/science.png"><h2>SCIENCE</h2></span>
+          <span class="tab-link" tabindex="2" id="art"><img src="img/art-1.png"> <h2>ART</h2></span>
+          <span class="tab-link" tabindex="3" id="lit"><img src="img/lite.png"> <h2>LITERATURE</h2></span>
+          <span class="tab-link" tabindex="4" id="sport"><img src="img/sport.png"> <h2>SPORTS</h2></span>
+          <span class="tab-link" tabindex="5" id="community"><img src="img/community.png"> <h2>COMMUNITY</h2></span>
         </div>
     </div>
 </section>
@@ -275,5 +303,69 @@ Give more weight to their contributions</h2>
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript">
+
+      jQuery(document).ready(function(cash) { 
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+       
+       $( "#science" ).mouseover(function() {
+
+          $("#science_hover").show();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
+
+       $( "#community" ).mouseover(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").show();
+
+
+       });
+       $( "#art").mouseover(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").show();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
+       $( "#lit" ).mouseover(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").show();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
+       $( "#sport" ).mouseover(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").show();
+          $("#community_hover").hide();
+
+
+       });
+       
+       
+         });
+    </script>
   </body>
 </html>
