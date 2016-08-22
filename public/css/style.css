@@ -120,7 +120,12 @@ outline: 0;
     background: #3489DB;
     padding: 15px;
 }
-.hover_bg h4, .hover_bg p{
+.fl{
+     background: #3489DB;
+    padding: 15px;
+        min-height: 180px;
+}
+.fl h4, .fl p{
     color: #fff;
 }
 .thumb-top{
