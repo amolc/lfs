@@ -589,7 +589,7 @@ footer .navbar-default .navbar-nav>li>a{
     background: #fff;
     border: 1px solid #f0f0f0;
     border-left: 0;
-    border-bottom: 0;
+    border-bottom: 4px solid #F1F1F1;
 }
 .tab-link h2{
 	color: #414141;
@@ -626,7 +626,7 @@ clear: both;
 
 .tab-area {
     float: left;
-    margin: 30px 0;
+    margin: 0 0 30px 0;
     }
 
 input { 
