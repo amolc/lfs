@@ -44,7 +44,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'mobile')));
-
+app.use(express.static(path.join(__dirname, 'public1')));
 
 /*catch 404 and forward to error handler*/
 /*app.use(function(req, res, next) {
@@ -86,6 +86,7 @@ if (app.get('env') === 'development') {
 app.use('/', express.static(__dirname + '/public'));
 app.use('/api', express.static(__dirname + '/api'));
 app.use('/mobile', express.static(__dirname + '/mobile/www'));
+app.use('/public1', express.static(__dirname + '/public1'));
 
 var userlogin = require('./api/userlogin.js');
 var todos = require('./api/todos.js');
