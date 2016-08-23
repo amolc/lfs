@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:ng="http://angularjs.org" data-ng-app="Lfs">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,28 +16,28 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    
-    
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">    -->
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="css/style.css" rel="stylesheet">
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!-- lib-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+    <script src="lib/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="lib/angular-storage.min.js"></script>
+    <script src="lib/angular-messages.min.js"></script>
+
+    <script src="config/config.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+
   </head>
 
-  <body>
+  <body data-ng-controller="MainController">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
           <ul class="nav navbar-nav">
@@ -60,334 +60,72 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><img src="img/logo.png"></a>
+          <a class="navbar-brand" ui-sref="home"><img src="img/logo.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="#">Home</a></li>
-            <li><a href="listing.html">Our Esteemed Donors </a></li>
-            <li><a href="download.html">Download Brochure</a></li>
-            <li><a class="btn btn-primary btn-lg" href="donation.html">Donate Now</a></li>
+            <li ui-sref-active="active"><a ui-sref="home" >Home</a></li>
+            <li ui-sref-active="active"><a ui-sref="donars">Our Esteemed Donors </a></li>
+            <li ui-sref-active="active"><a ui-sref="brochure">Download Brochure</a></li>
+            <li><a class="btn btn-primary btn-lg" ui-sref="donation">Donate Now</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>A personalised education and support structure for learning excellence</h1>
-      </div>
-      <img src="img/banner.png" class="banner-img">
-      
-    </div>
-    <section class="light-grey">
-    <div class="container">
-      <div class="row thumb-top">
-        <div class="col-md-4 col-sm-12">
-          <div class="thumb blue" data-toggle="tooltip" data-placement="top" title="Hooray!">
-            <hr>
-            <h2>Support Academic Excellence</h2>
-            <p>Support the LFS establishment project in achieving school projects! </p>
-          </div> 
-          <div class="thumb-border"></div> 
-        </div>
-        <div class="col-md-4 col-sm-12">
-          <div class="thumb gold">
-            <hr>
-            <h2>Accompany evolution of the institution</h2>
-            <p>Accompany the large-scale evolution projects of the LFS! </p>
-          </div> 
-          <div class="thumb-border"></div> 
-        </div>
-        <div class="col-md-4 col-sm-12">
-          <div class="thumb red">
-            <hr>
-            <h2>Reinforce our social<br> role</h2>
-            <p>Help us integrate all students into the LFS community, including the children from disadvantaged  backgrounds!</p>
+
+    <div ui-view></div>
+
+
+    <footer>
+        <nav class="navbar navbar-default"> 
+          <div class="container">
+              <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+              <ul class="nav navbar-nav navbar-right">
+                 <li class="active"><a href="#">Home</a></li>
+
+                </li>
+                <li><a ui-sref="donars">Our Esteemed Donors </a></li>
+                <li><a ui-sref="brochure">Download Brochure</a></li>
+                <li><button class="btn btn-primary btn-lg" ui-sref="donation">Donate Now</button></li>
+                <li><img src="img/footer-map.png"></li>
+              </ul>
+            </div>
           </div>
-          <div class="thumb-border"></div>  
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h2 class="axis-col">PHILANTROPHIC<br> AXIS</h2>
-        </div>
-        <div class="col-md-8">
-          <h2 style="color:#6D6D6D;">In line with our objectives, several funding envelopes are at your 
-          disposal for your contribution through the program of your choice</h2>
-        </div>
-
-      </div>
-    </div>
-    <br><br>
-    <div class="container">
-<div id="science_hover" class="learn_bg fl">
-<h4>In life, nothing is to be feared,
-everything is to be understood.
-Marie Curie</h4>
-<p>By transforming mystery into challenge, science adds a new dimension to life. 
-And a new dimension opens several paths to self-fulfillment. <br><br>
-
-Science and technology also aim to develop interest in scientific and 
-technical progress. This is why our educational schemes are aligned with an investigative 
-approach that fosters curiosity and creativity.
-</p>
-</div>
-<div id="art_hover" class="network_bg fl">
-  <h4>It is not in the object that lies the
-meaning of things, but in the
-process. Saint-Exupéry</h4>
-<p>Art undoubtedly occupies a special place in the heart of contemporary society, in which the relation to art pieces and creation is transformed by the development of media.<br><br>
-
-Spectators, creators or interpreters, all of our students are encouraged to develop an ability 
-to give meaning to art and to perceive in it human, social and economic challenges, in 
-order to open up to others.</p>
-</div>
-<div id="lit_hover" class="achieve_bg fl">
-  <h4>What are books good for, if they
-don’t make us feel alive, if they 
-can’t make us live it more intensely? 
-Henry Miller</h4>
-<p>Beyond a concept of reading and besides contributing to the acquisition of language proficiency, literature also engages the student’s vision.<br><br>
-
-We are convinced that literature opens the mind, raises awareness to humanity, helps to see with the heart and is essential to any kind of responsible political life in the current 
-context of globalization.</p>
-</div>
-<div id="sport_hover" class="achieve_bg fl">
-  <h4>Sport seeks out fear to dominate it, 
-exhaustion to triumph over it, 
-difficulty to overcome it.
-Pierre de Coubertin</h4>
-<p>Physical education allows students to develop a sense of effort, risk-taking and 
-perseverance. By putting into action moral and social core values, such as respect for 
-collective rules or respect for self and others, it provides a favorable context for teaching
-responsibility and autonomy. <br><br>
-
-This is why our sports teams continue to radiate the image of our institution in different 
-environments and countries!</p>
-</div>
-<div id="community_hover" class="achieve_bg fl">
-<h4>Real generosity towards the
-future lies in giving all to the 
-present.
-Albert Camus</h4>
-<p>Each year, we welcome in the Lycée several children from families in financial difficulty, 
-who are sometimes subsidized bythe French state, primarily for school fees. 
-We set aside a social envelope for disadvantaged students to help them to continue to
-attend school and various additional educational projects, such assports trips.<br><br>
-
-Fully respecting our equal opportunity policy, our social envelope is the embodiment of 
-our commitment to deliver excellence for all.</p>
-</div>
-    </div>
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-12 tab-area tabs-hover">
-          <span class="tab-link" tabindex="1" id="science"><img src="img/science.png"><h2>SCIENCE</h2></span>
-          <span class="tab-link" tabindex="2" id="art"><img src="img/art-1.png"> <h2>ART</h2></span>
-          <span class="tab-link" tabindex="3" id="lit"><img src="img/lite.png"> <h2>LITERATURE</h2></span>
-          <span class="tab-link" tabindex="4" id="sport"><img src="img/sport.png"> <h2>SPORTS</h2></span>
-          <span class="tab-link" tabindex="5" id="community"><img src="img/community.png"> <h2>COMMUNITY</h2></span>
-        </div>
-    </div>
-</section>
-<section class="programs">
-<div class="container first">
-  <div class="row">
-    <div class="col-md-4">
-      <h2>PROGRAMS</h2>
-    </div>
-    <div class="col-md-8">
-      <h2>Commit yourself today in favor of education by signing on to one of our programs</h2>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="container second">
-  <div class="row">
-    <div class="col-md-4">
-      <h2>DIRECT DONATION</h2>
-    </div>
-    <div class="col-md-8">
-      <h2>Make a gift, simply<br>By cheque, wiring or on-line</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>NAMING</h2>
-    </div>
-    <div class="col-md-8">
-      <h2>Name an architectural element of the campus<br>
-      Already existing or to-be-built elements</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>SPONSORING</h2>
-    </div>
-    <div class="col-md-8">
-      <h2>Sponsor school events, LFS sporting teams<br>
-Associate you with the values of our institution</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>MATCHING GIFTS</h2>
-    </div>
-    <div class="col-md-8">
-      <h2>Double the funds donated by your employees<br>
-Give more weight to their contributions</h2>
-    </div>
-  </div>
-</div>      
-</section>
-<section>
-  <div class="container investment-graph">
-    <h2>WE WILL STUDY ALL POSSIBILITIES WITH YOU FOR A RETURN ON YOUR INVESTMENT </h2>
-    <img src="img/investment-graph.svg">
-  </div>
-</section>
-<section class="fundrising">
-  <div class="container">
-    <h3>LFS CODE OF ETHICS FOR FUNDRAISING</h3>
-    <div class="funding-border">
-    <div class="funding-box">
-      <img src="img/funding-font.svg">
-      <h1>HONESTY – RESPECT – INTEGRITY</h1>
-      <h2>Ensure public confidence</h2>
-      <h1>EMPATHY</h1>
-      <h2>Worrying about the interests and well being of others</h2>
-      <h1>TRANSPARENCY</h1>
-      <h2>Inform clearly and precisely</h2>
-    </div>
-    </div>
-    <button class="btn btn-primary btn-outline btn-xl" href="#" role="button">Download Brochure</button>
-  </div>
-</section>
-<footer>
-    <nav class="navbar navbar-default"> 
-      <div class="container">
-          <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
-          <ul class="nav navbar-nav navbar-right">
-             <li class="active"><a href="#">Home</a></li>
-
-            </li>
-            <li><a href="#">Our Esteemed Donors </a></li>
-            <li><a href="#">Download Brochure</a></li>
-            <li><button class="btn btn-primary btn-lg" href="#" role="button">Donate Now</button></li>
-            <li><img src="img/footer-map.png"></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <div class="sub-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>Lycée Français de Singapour © - 3000 Ang Mo Kio Avenue 3, Singapore 569928
-                Tél : (65) 6805 0000 - Fax : (65) 6805 0199 - Courriel : administration@lfs.edu.sg
-                No. of Company : 198004581H</p>
-                <p>Photography credits - Lionel Bottereau</p>
+        </nav>
+        <div class="sub-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p>Lycée Français de Singapour © - 3000 Ang Mo Kio Avenue 3, Singapore 569928
+                    Tél : (65) 6805 0000 - Fax : (65) 6805 0199 - Courriel : administration@lfs.edu.sg
+                    No. of Company : 198004581H</p>
+                    <p>Photography credits - Lionel Bottereau</p>
+              </div>
+              <div class="col-md-6" align="right">
+                <p class="top-space">Download Brochure</p>
+                <p>Download Code of Ethical Principles and Standards</p>
+              </div>
+            </div>
           </div>
-          <div class="col-md-6" align="right">
-            <p class="top-space">Download Brochure</p>
-            <p>Download Code of Ethical Principles and Standards</p>
+          <hr>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p>Copyright © 2016 Lycée Français de Singapour</p>
+              </div>
+              <div class="col-md-6" align="right">
+                <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook fa-2x social" aria-hidden="true"></i></a>
+                  <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter fa-2x social"></i></a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <hr>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <p>Copyright © 2016 Lycée Français de Singapour</p>
-          </div>
-          <div class="col-md-6" align="right">
-            <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook fa-2x social" aria-hidden="true"></i></a>
-              <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter fa-2x social"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-</footer>
+    </footer>
     <!-- /container -->
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script type="text/javascript">
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
 
-      jQuery(document).ready(function(cash) { 
-          $("#science_hover").hide();
-          $("#art_hover").hide();
-          $("#lit_hover").hide();
-          $("#sport_hover").hide();
-          $("#community_hover").hide();
-       
-       $( "#science" ).mouseover(function() {
-
-          $("#science_hover").show();
-          $("#art_hover").hide();
-          $("#lit_hover").hide();
-          $("#sport_hover").hide();
-          $("#community_hover").hide();
-
-
-       });
-
-       $( "#community" ).mouseover(function() {
-
-          $("#science_hover").hide();
-          $("#art_hover").hide();
-          $("#lit_hover").hide();
-          $("#sport_hover").hide();
-          $("#community_hover").show();
-
-
-       });
-       $( "#art").mouseover(function() {
-
-          $("#science_hover").hide();
-          $("#art_hover").show();
-          $("#lit_hover").hide();
-          $("#sport_hover").hide();
-          $("#community_hover").hide();
-
-
-       });
-       $( "#lit" ).mouseover(function() {
-
-          $("#science_hover").hide();
-          $("#art_hover").hide();
-          $("#lit_hover").show();
-          $("#sport_hover").hide();
-          $("#community_hover").hide();
-
-
-       });
-       $( "#sport" ).mouseover(function() {
-
-          $("#science_hover").hide();
-          $("#art_hover").hide();
-          $("#lit_hover").hide();
-          $("#sport_hover").show();
-          $("#community_hover").hide();
-
-
-       });
-       
-       
-         });
-    </script>
   </body>
 </html>
