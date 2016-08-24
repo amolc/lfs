@@ -137,7 +137,7 @@ angular.module('adminPanel').controller('MainController', [
 
     $scope.adminsignout = function() {
        //$cookieStore.remove('adminsession');
-       store.remove('userSession');
+       store.remove('adminsession');
        $location.path('login');
        $scope.init();
     };
