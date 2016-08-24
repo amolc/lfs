@@ -48,7 +48,7 @@ angular.module('adminPanel').controller('donarController', [
         }
 
         $scope.editDonar =function (data){
-            $scope.donar = data;
+            $scope.donar = JSON.parse(JSON.stringify(data));
             $scope.ShowHide();
         }
 
