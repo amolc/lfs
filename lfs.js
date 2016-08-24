@@ -2,14 +2,16 @@
 
 var express = require('express');
 var path = require('path');
+var router = express.Router();
+var app = express();
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var router = express.Router();
 
 
-var app = express();
+
+
 
 /**
  * Module dependencies.
@@ -44,7 +46,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'mobile')));
-
+app.use(express.static(path.join(__dirname, 'admin')));
 /*catch 404 and forward to error handler*/
 /*app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -85,14 +87,10 @@ if (app.get('env') === 'development') {
 app.use('/', express.static(__dirname + '/public'));
 app.use('/api', express.static(__dirname + '/api'));
 app.use('/mobile', express.static(__dirname + '/mobile/www'));
+app.use('/admin', express.static(__dirname + '/admin'));
 
-
-var userlogin = require('./api/userlogin.js');
-var todos = require('./api/todos.js');
-var device_register = require('./api/device_register.js');
-var sendpushnotification = require('./api/sendpushnotification.js');
-var salary = require('./api/salary.js');
-//var savepayslip = require('./api/salary.js');
+var adminlogin = require('./api/adminlogin.js');
+var donar = require('./api/donar.js');
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -100,17 +98,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-//app.use('/api/setting', salary);
-app.get('/api/setting', salary.settings);
-app.post('/api/getemployee', salary.getemployee);
-app.post('/api/savepayslip', salary.savepayslip);
-app.post('/api/employeepayslip', salary.employeepayslip);
-app.post('/api/createmployee', salary.createmployee);
-app.post('/api/deleteemployee', salary.deleteemployee);
-app.post('/api/deleteemployeepayslip', salary.deleteemployeepayslip);
-
-
-
+app.use('/api/adminlogin', adminlogin); 
+app.use('/api/donar', donar); 
 // app.post('/api/login', userlogin.login);
 // app.post('/api/addtodos',todos.addtodos);
 // app.post('/api/gettodos',todos.gettodos);

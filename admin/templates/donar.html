@@ -1,0 +1,117 @@
+<div data-ng-controller="donarController">
+<form name="AddDonarForm" id="AddDonarFrm" data-ng-submit="addupdatedonar(AddDonarForm.$valid)" novalidate>
+  <h1 class="bg-info" style=" text-align: center;">DONARS</h1>
+  <div class="container" style="width: 100%;">
+    <br/>
+    <span class="btn btn-primary" ng-click="ShowHide()">
+      <i class="glyphicon glyphicon-plus"></i>
+      Add Donars
+    </span>
+    <br/>
+    <br/>
+    <div ng-show="IsVisible">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <input type="text" name="donorname" ng-model="donar.donorname" tabindex="1" class="form-control" placeholder="Donor Name" required>
+          <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.donorname.$error" role="alert">
+            <div class="text-danger" style="text-align: center;" ng-message="required">
+              Enter Donar Name</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="textarea" name="title" ng-model="donar.preftitle" tabindex="2" class="form-control" placeholder="Preferred Title" required>
+          <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.title.$error" role="alert">
+            <div class="text-danger" style="text-align: center;" ng-message="required">
+              Enter Preferred Title</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" name="nominationcode" ng-model="donar.nominationcode" tabindex="3" class="form-control" placeholder="Enter Nomination Code" required>
+          <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.nominationcode.$error" role="alert">
+            <div class="text-danger" style="text-align: center;" ng-message="required">
+              Enter Nomination Code </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="donarrole" ng-model="donar.roleid" ng-options="roll.roleid as roll.role_name for roll in donarrolls" required>
+              <option value="" disabled selected hidden>Select Donar Roll</option>
+          </select>
+          <div ng-messages="AddDonarForm.$submitted && AddDonarForm.donarrole.$error" role="alert">
+              <div class="text-danger" style="text-align: center;" ng-message="required">
+                  Select Donar Roll</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <select class="form-control" name="donortype" ng-model="donar.donortype" required>
+              <option value="" disabled selected hidden>Select Donar Type</option>
+              <option>Individual Donors</option>
+              <option>Corporate Donors</option>
+          </select>
+          <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.donortype.$error" role="alert">
+              <div class="text-danger" style="text-align: center;" ng-message="required">
+                  Select Donar Type</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="" ng-if="donar.donorid == 0 ">
+            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn-primary" value="Save">
+          </div>
+          <div class="" ng-if="donar.donorid > 0">
+            <input type="submit" name="category-update" id="category-update" tabindex="4" class="form-control btn-primary" value="Update">
+            <br>
+            <input type="button" ng-click="resetform()" name="category-cancel" id="category-cancel" tabindex="4" class="form-control btn-primary" value="Cancel">
+          </div>
+          <br>
+          <br>
+          <div ng-model="categorySuccessmsg" ng-show="showcategorySuccessmsg" class="alert alert-success">{{categorySuccessmsg}}</div>
+          <div ng-model="categoryErrorsmsg" ng-show="showcategoryErrormsg" class="alert alert-danger">{{categoryErrormsg}}</div>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <table id="table" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Profile title</th>
+          <th>Nomination code</th>
+          <th style="width: 90px;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="don in donarlist">
+          <th>{{don.donorname}}</th>
+          <th>{{don.donortype}}</th>
+          <th>{{don.preftitle}}</th>
+          <th>{{don.nominationcode}}</th>
+          <th>
+            <span class="">
+              <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-click="editDonar(don)"></i>&nbsp&nbsp&nbsp&nbsp&nbsp
+              <i class="glyphicon glyphicon-trash" style="cursor:pointer"  data-toggle="modal" data-target="#myModal" ng-click="askdelete(don)"></i>
+            </span>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="margin: 225px auto;">
+        <!-- Modal content-->
+        <div class="modal-content delete">
+            <div class="modal-header" style="border:none;">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"><img src="img/close-button.svg" ng-click="clear()"></span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="img/delete.svg"><br>
+                <h3 id="lineModalLabel">Delete Donor</h3>
+                 <div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="padding:5px 20px;" ng-click="clear()">Cancel</button>
+                     <button type="button" id="deletebtn" class="btn btn-primary" ng-click="deletedonor()" data-dismiss="modal" style="margin-left: 5px;padding: 5px 20px;">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

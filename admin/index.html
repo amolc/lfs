@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" data-ng-app="adminPanel">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin</title>
+    <!-- Bootstrap Core CSS -->
+
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico"/> -->
+
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind|Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!--END Font Awesome -->
+    <!-- Custom CSS -->
+
+    <link href="/assets/css/app.css" rel="stylesheet">
+    <!--END Custom CSS -->
+
+    <!-- LIBS -->
+    <script src="js/config.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/lib/angular.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="/lib/underscore.js"></script>
+    <script type="text/javascript" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-storage.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="js/controllers/donarController.js"></script>
+    <script type="text/javascript" src="js/services/apiService.js"></script>
+    <script type="text/javascript" src="js/services/modalService.js"></script>
+   
+  </head>
+  <!-- data-ng-init="init()" -->
+  <body data-ng-controller="MainController">
+    <div id="mainwrapper" ui-view></div>
+    <!-- Footer -->
+  </div>
+</body>
+</html>
