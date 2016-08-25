@@ -137,17 +137,12 @@ angular.module('Lfs').controller('MainController', [
         $scope.setflag = function(flag){
             if(flag === 1){
                 $scope.donortype = 'Individual Donors';
-                console.log("donortype:",$scope.donortype);
             } else {
                 $scope.donortype = 'Corporate Donors';
-                console.log("donortype:",$scope.donortype)
             }
             var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
              $scope.alldonorList = filtercategory;
-             console.log("filtercategory cat in filtercategory:",$scope.alldonorList)
         }
-
-         console.log("imageURL:",imageURL);
          $scope.imageURL = imageURL;
     }
 ]);

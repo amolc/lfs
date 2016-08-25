@@ -24,20 +24,21 @@
               Corporate Donors</a>
                                 </li>
                             </ul>
-                            <div class="tab-content">{{imageURL}}
+                            <div class="tab-content">
                                 <div class="row tab-pane active" id="tab_default_1">
                                     <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
                                         <div class="well">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
-                                            <img src="img/silver.png" ng-if="donor.imageurl == 'silver.png'">
-                                            <img src="img/bronze.png" ng-if="donor.imageurl == 'bronze.png'">
-                                            <img src="img/platinum.png" ng-if="donor.imageurl == 'platinum.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
+                                                <h3>{{donor.donorname}}</h3>
+                                                <p>{{donor.preftitle}}</p>
                                             </div>
                                         </div>
                                     </div>
+                                   
                                     <!-- <div class="col-md-4 col-sm-6">
                                         <div class="well">
                                             <img src="img/silver.png" alt="">
