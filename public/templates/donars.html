@@ -25,391 +25,67 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="row tab-pane active" id="tab_default_1">
+                                <div class="row tab-pane active" id="tab_default_1" ng-if="donortype == 'Individual Donors'">
                                     <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
-                                        <div class="well">
+                                        <div class="well" ng-mouseover="callingover(donor);showPopover = true;" ng-mouseleave="showPopover=false;">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <h3>{{donor.donorname}}</h3>
-                                                <p>{{donor.preftitle}}</p>
+                                                <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
+                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3>
+                                                <p ng-if="donor.preftitle.length < '50'">{{donor.preftitle | limitTo: 50}}</p>
+                                                <p ng-if="donor.preftitle.length > '50'">{{donor.preftitle | limitTo: 50}}..</p>
                                             </div>
+                                           
                                         </div>
-                                    </div>
-                                   
-                                    <!-- <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="platinum">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
+                                         <div class="popover" ng-show="showPopover" >
+                                            <div class="well">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
+                                                <div class="span3">
+                                                    <h3>{{popover.title}}</h3>
+                                                    <p>{{popover.message}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row tab-pane" id="tab_default_2">
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
+                                <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
+                                    <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
+                                        <div class="well" ng-mouseover="callingover(donor);showPopover = true;" ng-mouseleave="showPopover=false;">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
+                                                <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
+                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3>
+                                                <p ng-if="donor.preftitle.length < '50'">{{donor.preftitle | limitTo: 50}}</p>
+                                                <p ng-if="donor.preftitle.length > '50'">{{donor.preftitle | limitTo: 50}}..</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="popover" ng-show="showPopover" data-placement="bottom">
+                                            <div class="well">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                                <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
+                                                <div class="span3">
+                                                    <h3>{{popover.title}}</h3>
+                                                    <p>{{popover.message}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="platinum">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/silver.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/platinum.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/bronze.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div> 
-                                    <div class="col-md-4 col-sm-6">
-                                        <div class="well">
-                                            <img src="img/gold.png" alt="">
-                                            <div class="span3">
-                                                <h3>Genevieve Norman</h3>
-                                                <p>Member of French Society</p>
-                                            </div>
-                                        </div>
-                                    </div>-->
                                 </div>
                             </div>
                         </div>

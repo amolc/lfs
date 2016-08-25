@@ -6,7 +6,7 @@ var ApplicationModuleName = 'Lfs';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages']);
+var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap']);
 
 /*SampleApplicationModule.run(function($rootScope, AuthService, $state, $location, store) {
 
@@ -98,7 +98,9 @@ angular.module('Lfs').controller('MainController', [
     'store',
     '$sce',
     '$window',
-    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, AuthService, $window) {
+    '$modal',
+    '$log',
+    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, $window , $modal , $log) {
         $scope.userSession = store.get('userSession') || {};
 
         $scope.init = function() {
@@ -144,5 +146,19 @@ angular.module('Lfs').controller('MainController', [
              $scope.alldonorList = filtercategory;
         }
          $scope.imageURL = imageURL;
+
+         $scope.showPopover=false; 
+
+         $scope.callingover =  function(obj){
+            console.log("abc:",obj);
+            console.log("calling hover....");
+           $scope.popover = {
+                title: obj.donorname,
+                message: obj.preftitle
+            };
+               
+        }
+
+            
     }
 ]);

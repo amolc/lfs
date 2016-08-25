@@ -754,3 +754,24 @@ input {
 	}
 
 }
+
+.popover {
+    text-decoration: none;
+    color: black;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    padding: 0 20px;
+    width: 370px;
+    max-width: 400px;
+}
+.popover .well {
+    box-shadow: none;
+    border: none;
+    margin-bottom: 0px;
+}
+.popover span {
+    display: block;
+    font-weight: 700;
+}
