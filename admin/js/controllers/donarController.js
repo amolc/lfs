@@ -31,7 +31,7 @@ angular.module('adminPanel').controller('donarController', [
           donorname : '',
           id : $scope.adminsession.id ,
           donortype : '',
-          roleid : 0
+          roleid : ''
         }
         
 

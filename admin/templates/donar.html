@@ -15,7 +15,7 @@
           <input type="text" name="donorname" ng-model="donar.donorname" tabindex="1" class="form-control" placeholder="Donor Name" required>
           <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.donorname.$error" role="alert">
             <div class="text-danger" style="text-align: center;" ng-message="required">
-              Enter Donar Name</div>
+              Enter Donor Name</div>
           </div>
         </div>
         <div class="form-group">
@@ -34,22 +34,22 @@
         </div>
         <div class="form-group">
           <select class="form-control" name="donarrolaa" ng-model="donar.roleid" ng-options="roll.roleid as roll.role_name for roll in donarrolls" required>
-              <option value="" disabled selected hidden>Select Donar Roll</option>
+              <option value="" disabled selected hidden>Select Donor Roll</option>
           </select>
           <div ng-messages="AddDonarForm.$submitted && AddDonarForm.donarrolaa.$error" role="alert">
               <div class="text-danger" style="text-align: center;" ng-message="required">
-                  Select Donar Roll</div>
+                  Select Donor Roll</div>
           </div>
         </div>
         <div class="form-group">
           <select class="form-control" name="donortype" ng-model="donar.donortype" required>
-              <option value="" disabled selected hidden>Select Donar Type</option>
+              <option value="" disabled selected hidden>Select Donor Type</option>
               <option>Individual Donors</option>
               <option>Corporate Donors</option>
           </select>
           <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.donortype.$error" role="alert">
               <div class="text-danger" style="text-align: center;" ng-message="required">
-                  Select Donar Type</div>
+                  Select Donor Type</div>
           </div>
         </div>
         <div class="form-group">
