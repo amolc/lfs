@@ -57,7 +57,6 @@ angular.module('adminPanel').controller('donarController', [
         $scope.adddonar  = function(){
                 $scope.donar.id = $scope.adminsession.id;
                 $http.post(baseUrl + 'donar/adddonar' , $scope.donar).success(function(res, req){
-
                     if(res.status == true){
                         $scope.donarlist.push({
                             "donorid":res.record.insertId,
@@ -67,7 +66,7 @@ angular.module('adminPanel').controller('donarController', [
                             "preftitle":$scope.donar.preftitle,
                             "roleid":$scope.donar.roleid
                         });
-                        console.log("donarlist:",$scope.donarlist);
+                        //console.log("donarlist:",$scope.donarlist);
                         $scope.AddDonarForm.$setPristine();
                         $scope.resetform();
                         //$scope.getdonarlist();
