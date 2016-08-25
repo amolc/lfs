@@ -1,5 +1,5 @@
 <div data-ng-controller="donarController">
-<form name="AddDonarForm" id="AddDonarFrm" data-ng-submit="addupdatedonar(AddDonarForm.$valid)" novalidate>
+<form name="AddDonarForm" id="AddDonarFrm" data-ng-submit="addupdatedonar(AddDonarForm)" novalidate>
   <h1 class="bg-info" style=" text-align: center;">DONORS</h1>
   <div class="container" style="width: 100%;">
     <br/>
@@ -33,10 +33,10 @@
           </div>
         </div>
         <div class="form-group">
-          <select class="form-control" name="donarrole" ng-model="donar.roleid" ng-options="roll.roleid as roll.role_name for roll in donarrolls" required>
+          <select class="form-control" name="donarrolaa" ng-model="donar.roleid" ng-options="roll.roleid as roll.role_name for roll in donarrolls" required>
               <option value="" disabled selected hidden>Select Donar Roll</option>
           </select>
-          <div ng-messages="AddDonarForm.$submitted && AddDonarForm.donarrole.$error" role="alert">
+          <div ng-messages="AddDonarForm.$submitted && AddDonarForm.donarrolaa.$error" role="alert">
               <div class="text-danger" style="text-align: center;" ng-message="required">
                   Select Donar Roll</div>
           </div>
@@ -55,6 +55,8 @@
         <div class="form-group">
           <div class="" ng-if="donar.donorid == 0 ">
             <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn-primary" value="Save">
+            <br>
+            <input type="button" ng-click="resetform()" name="category-cancel" id="category-cancel" tabindex="4" class="form-control btn-primary" value="Cancel">
           </div>
           <div class="" ng-if="donar.donorid > 0">
             <input type="submit" name="category-update" id="category-update" tabindex="4" class="form-control btn-primary" value="Update">

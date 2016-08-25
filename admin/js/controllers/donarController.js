@@ -35,8 +35,9 @@ angular.module('adminPanel').controller('donarController', [
         }
         
 
-        $scope.addupdatedonar = function(valid){
-            if(valid){
+        $scope.addupdatedonar = function(AddDonarForm){
+            console.log(AddDonarForm);
+            if(AddDonarForm.$valid){
                 if($scope.donar.donorid > 0){
                     $scope.updatedonar();
                 } else if($scope.donar.donorid === 0){
@@ -48,18 +49,31 @@ angular.module('adminPanel').controller('donarController', [
         }
 
         $scope.editDonar =function (data){
+            console.log("data:",data);
+            //$scope.donar =data;
             $scope.donar = JSON.parse(JSON.stringify(data));
             $scope.ShowHide();
         }
 
         $scope.adddonar  = function(){
+            console.log('saas');
                 $scope.donar.id = $scope.adminsession.id;
                 $http.post(baseUrl + 'donar/adddonar' , $scope.donar).success(function(res, req){
-                    console.log("res in adddonar:",res);
+
                     if(res.status == true){
-                         $scope.ShowHide();
-                         $scope.getdonarlist();
-                         document.getElementById("AddDonarFrm").reset();
+                        $scope.donarlist.push({
+                            "donorid":res.record.insertId,
+                            "donorname":$scope.donar.donorname,
+                            "donortype":$scope.donar.donortype,
+                            "nominationcode":$scope.donar.nominationcode,
+                            "preftitle":$scope.donar.preftitle,
+                            "roleid":$scope.donar.roleid
+                        });
+                        console.log("donarlist:",$scope.donarlist);
+                        $scope.AddDonarForm.$setPristine();
+                        $scope.resetform();
+                        //$scope.getdonarlist();
+                       // document.getElementById("AddDonarFrm").reset();
                     }
                     
                 }).error(function(error) {
@@ -70,8 +84,10 @@ angular.module('adminPanel').controller('donarController', [
         $scope.updatedonar = function(){
              $http.post(baseUrl + 'donar/updatedonar' , $scope.donar).success(function(res, req){
                     if(res.status == true){
-                         $scope.getdonarlist();
-                         $scope.resetform();
+                        $scope.getdonarlist();
+                        $scope.AddDonarForm.$setPristine();
+                        $scope.resetform();
+                        //$scope.ShowHide();
                     }
                     
                 }).error(function(error) {
