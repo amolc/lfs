@@ -116,5 +116,36 @@ router.get('/getalldonarlist', function(req, res) {
     });
 });
 
+router.post('/searchdonor', function(req, res) {
+  //console.log("searchdonor");
+  //console.log("res 121:",req.body);
+  var admin_id  = req.body.id;
+  var donorname = req.body.name;
+  var donortype = req.body.type;
+  var nominationcode = req.body.nomination;
+
+  if(req.body.type){
+    //console.log("search by type");
+    var sql = "SELECT * from donors where donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;  
+  }else if(req.body.name){
+    //console.log("search by name");
+    var sql = "SELECT * from donors where donorname LIKE '%" + donorname +"%'" + "AND admin_id = " + admin_id; 
+  }else if(req.body.nomination){
+    var sql = "SELECT * from donors where nominationcode LIKE '%" + nominationcode +"%'" + "AND admin_id = " + admin_id;  
+    //console.log("search by nominationcode");
+  }else{
+    //console.log("search all");
+    var sql = "SELECT * from donors";  
+  }
+    //console.log("sql query:",sql);
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.jsonp(response);
+        }
+    });
+});
+
 
 module.exports = router;

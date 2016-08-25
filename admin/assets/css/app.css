@@ -221,3 +221,59 @@
     width: 11px;
     margin-top: -4px;
 }
+
+.jumbotron .container{
+    position: relative;
+}
+.navbar-inverse {
+    background-color: #292929;
+    border-color: #292929;
+    min-height: 40px;
+    height: 40px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    padding-top: 10px;
+    font-weight: 500;
+    color: #348DE3;
+}
+.navbar-inverse .navbar-right.nav>li>a {
+    color: #9B9B9B;
+}
+.navbar-inverse .navbar-right.nav>li>a.active{
+  color: #fff;
+}
+.navbar-inverse .navbar-nav {
+    margin-left: -15px;
+}
+.navbar-inverse .nav>li>a>img {
+    max-width: none;
+    float: left;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+.navbar-default {
+    background-color: #fff;
+    border-color: #fff;
+    top: 40px;
+    height: 120px;
+    border-bottom: solid 1px #e5e5e5;
+    box-shadow: 0 0 20px #494949;
+}
+.navbar-default .navbar-brand {   
+    padding: 10px 15px;
+}
+.navbar-default .navbar-right{
+  margin-top: 35px;
+  margin-right: 0;
+}
+.navbar-default .navbar-nav>li>a{
+  padding: 10px 20px;
+}
+.navbar-default .navbar-right .btn-primary{
+    margin-top: 5px;
+    margin-left: 20px;
+    color: #fff;
+    padding-top: 13px;
+    background: #2b72b6;
+    border:none;
+}

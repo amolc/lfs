@@ -112,7 +112,7 @@ angular.module('adminPanel').controller('MainController', [
             store.set('adminsession', adminsession);
             console.log("adminsession:", adminsession);
             $scope.init();
-            $state.go('mainview.welcome');
+            $state.go('mainview.donar');
           } else if (res.status === false) {
             console.log("login failed");
             $scope.loginfailuremsg = 'Please Enter Valid Email Address and Password';

@@ -144,6 +144,18 @@ angular.module('adminPanel').controller('donarController', [
                     console.log("Error", error);
             });
         };
+
+        $scope.searchbyoption = function(searchForm,searchobj){
+            if(searchForm.$valid){
+                searchobj.id =$scope.adminsession.id;
+                $http.post(baseUrl + 'donar/searchdonor' , searchobj).success(function(res, req){
+                        //console.log("res:",res);
+                        $scope.donarlist = res;
+                    }).error(function(error) {
+                        console.log("Error", error);
+                });
+            }
+        }
  
     }
 ]);
