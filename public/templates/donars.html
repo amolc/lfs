@@ -15,27 +15,30 @@
                     <div class="tabbable-panel">
                         <div class="tabbable-line">
                             <ul class="nav nav-tabs ">
-                                <li class="active">
-                                    <a href="donars#tab_default_1" data-toggle="tab">
+                                <li class="active" >
+                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1)">
               Individual Donors </a>
                                 </li>
                                 <li>
-                                    <a href="donars#tab_default_2" data-toggle="tab">
+                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2)">
               Corporate Donors</a>
                                 </li>
                             </ul>
-                            <div class="tab-content">
+                            <div class="tab-content">{{imageURL}}
                                 <div class="row tab-pane active" id="tab_default_1">
-                                    <div class="col-md-4 col-sm-6">
+                                    <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
                                         <div class="well">
-                                            <img src="img/gold.png" alt="">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                            <img src="img/silver.png" ng-if="donor.imageurl == 'silver.png'">
+                                            <img src="img/bronze.png" ng-if="donor.imageurl == 'bronze.png'">
+                                            <img src="img/platinum.png" ng-if="donor.imageurl == 'platinum.png'">
                                             <div class="span3">
                                                 <h3>Genevieve Norman</h3>
                                                 <p>Member of French Society</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-sm-6">
+                                    <!-- <div class="col-md-4 col-sm-6">
                                         <div class="well">
                                             <img src="img/silver.png" alt="">
                                             <div class="span3">
@@ -396,7 +399,7 @@
                                                 <p>Member of French Society</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-4 col-sm-6">
                                         <div class="well">
                                             <img src="img/gold.png" alt="">
@@ -405,7 +408,7 @@
                                                 <p>Member of French Society</p>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div>

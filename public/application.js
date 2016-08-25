@@ -61,7 +61,7 @@ SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', 'storePr
 
     .state('brochure', {
         url: '/brochure',
-        templateUrl: 'templates/brochure.html',
+        templateUrl: 'templates/brochure.html'
     })
 
     .state('donation', {
@@ -119,5 +119,35 @@ angular.module('Lfs').controller('MainController', [
         // modal text
         $scope.ny_logtype = $sce.trustAsHtml('Har ert boende ingen egen logotyp eller är det dags att förnya den ni har? En modern och professionell logotyp stärker samhörigheten och engagemanget inom boendet.<br><br>Genom boappa kan ni snabbt och enkelt få en ny och snygg logotyp. Klicka på "Läs mer" för att se exempel och pris.');
         
+        $scope.flag = 1;
+        $scope.donortype = 'Individual Donors';
+
+        $scope.getalldonarlist = function(){
+               $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
+                    $scope.alldonorList1 = res;
+                    var filtercategory = _.where(res,{'donortype':$scope.donortype});
+                    $scope.alldonorList = filtercategory;
+                    
+               }).error(function(error) {
+                    console.log("Error", error);
+               });
+        };
+        $scope.getalldonarlist();
+
+        $scope.setflag = function(flag){
+            if(flag === 1){
+                $scope.donortype = 'Individual Donors';
+                console.log("donortype:",$scope.donortype);
+            } else {
+                $scope.donortype = 'Corporate Donors';
+                console.log("donortype:",$scope.donortype)
+            }
+            var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
+             $scope.alldonorList = filtercategory;
+             console.log("filtercategory cat in filtercategory:",$scope.alldonorList)
+        }
+
+         console.log("imageURL:",imageURL);
+         $scope.imageURL = imageURL;
     }
 ]);

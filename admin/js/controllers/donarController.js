@@ -49,14 +49,12 @@ angular.module('adminPanel').controller('donarController', [
         }
 
         $scope.editDonar =function (data){
-            console.log("data:",data);
             //$scope.donar =data;
             $scope.donar = JSON.parse(JSON.stringify(data));
             $scope.ShowHide();
         }
 
         $scope.adddonar  = function(){
-            console.log('saas');
                 $scope.donar.id = $scope.adminsession.id;
                 $http.post(baseUrl + 'donar/adddonar' , $scope.donar).success(function(res, req){
 

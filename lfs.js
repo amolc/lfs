@@ -86,8 +86,8 @@ if (app.get('env') === 'development') {
 
 app.use('/', express.static(__dirname + '/public'));
 app.use('/api', express.static(__dirname + '/api'));
-/*app.use('/mobile', express.static(__dirname + '/mobile/www'));*/
 app.use('/admin', express.static(__dirname + '/admin'));
+app.use('/assets/images', express.static(__dirname + '/assets/images'));
 
 var adminlogin = require('./api/adminlogin.js');
 var donar = require('./api/donar.js');
@@ -100,15 +100,7 @@ app.use(function(req, res, next) {
 
 app.use('/api/adminlogin', adminlogin); 
 app.use('/api/donar', donar); 
-// app.post('/api/login', userlogin.login);
-// app.post('/api/addtodos',todos.addtodos);
-// app.post('/api/gettodos',todos.gettodos);
-// app.post('/api/gettododetails',todos.gettododetails);
-// app.post('/api/updatetodos',todos.updatetodos);
-// app.post('/api/deletetodo',todos.deletetodo);
-// app.post('/api/deviceregister',device_register.deviceregister);
-// app.post('/api/signup',userlogin.signup);
-/*app.get('/api/sendnotification',sendpushnotification.sendnotification);*/
+
 
 module.exports = app;
 
