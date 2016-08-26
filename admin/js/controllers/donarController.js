@@ -98,10 +98,23 @@ angular.module('adminPanel').controller('donarController', [
             var id = $scope.adminsession.id
            $http.get(baseUrl + 'donar/getdonarlist/' + id).success(function(res, req){
                 $scope.donarlist = res;
+                var filtercategory = _.where(res,{'donortype':$scope.donortype});
            }).error(function(error) {
                 console.log("Error", error);
            });
         };
+
+
+        $scope.getalldonarlist = function(){
+               $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
+                    $scope.alldonorList = res;
+                    console.log(res);
+               }).error(function(error) {
+                    console.log("Error", error);
+               });
+        };
+        $scope.getalldonarlist();
+
 
         $scope.clear = function(){
             console.log("calling statereload");
@@ -179,7 +192,7 @@ angular.module('adminPanel').controller('donarController', [
                                 id: $scope.adminsession.id,
                                 csvData: results.data
                             };
-                            console.log("csv data:",$scope.csvData);
+                            //console.log("csv data:",$scope.csvData);
                             $http.post(baseUrl + 'donar/donorImport', $scope.csvData).success(function(res) {
                                 console.log(res);
                                 if (res.status === false) {
@@ -194,6 +207,7 @@ angular.module('adminPanel').controller('donarController', [
                                     $scope.showimportmsg = " Records successfully imported"; 
                                     $timeout(function() {
                                         $scope.showimportmessageCsv = false;
+                                        $state.go('mainview.donar');
                                     }, 3000);
                                 }
                                 $scope.getdonarlist();
@@ -216,7 +230,7 @@ angular.module('adminPanel').controller('donarController', [
 
     $scope.donorImport = function(ele) {
         $scope.csvFile = ele.files[0];
-        console.log("csvFile:",$scope.csvFile);
+        //console.log("csvFile:",$scope.csvFile);
         $scope.$apply();
     };
 

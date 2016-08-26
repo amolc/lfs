@@ -11,6 +11,10 @@
 					Import
 					<input accept=".csv,text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="file_browse" onchange="angular.element(this).scope().donorImport(this)" type="file" />
 				</div>
+				<div class="form-group">
+                	<a class="form-control" ng-href="http://node.fountaintechies.com:11000/assets/csv/sample.csv" style="border:none;">Sample Csv file</a>
+                </div>
+                <br>
 				<div style="margin-top: 10px;">
 					<button type="button" class="btn btn-primary" ng-click="uploadDonarCsv()">Save</button>
 					 <button type="button" class="btn accept " ng-click="clearcsv()">cancel</button>
@@ -19,7 +23,8 @@
                         <div class="text-danger" style="text-align: left;" ng-message="required">
                             Select Search Option</div>
                 </div>
-                <a ng-href="http://node.fountaintechies.com:11000/assets/csv/sample.csv">Sample Csv file</a>
+               
+                
                 <p style="color:green;" ng-if="showimportmessageCsv">{{showimportmsg}}</p>
                 <p style="color:maroon;" ng-if="showimporterrormsg">{{importerrormsg}}</p>		
           </form>

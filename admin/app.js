@@ -7,7 +7,7 @@ var ApplicationModuleName = 'adminPanel';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('adminPanel', ['ui.router','ngMessages','ngAnimate','ui.bootstrap','angular-storage']);
+var SampleApplicationModule = angular.module('adminPanel', ['ui.router','ngMessages','ngAnimate','ui.bootstrap','angular-storage','ngSanitize', 'ngCsv']);
 
 
 SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
@@ -18,21 +18,31 @@ SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', function
       url: '/login',
       templateUrl: 'templates/login.html'
     })
+
     .state('mainview', {
       url: '/mainview',
       templateUrl: 'templates/mainview.html'
     })
+
     .state('mainview.welcome', {
       url: '/welcome',
       templateUrl: 'templates/welcome.html'
     })
+
     .state('mainview.donar', {
       url: '/donar',
       templateUrl: 'templates/donar.html'
     })
+
     .state('mainview.importdonor', {
       url: '/importdonor',
       templateUrl: 'templates/importdonor.html'
+    })
+
+    .state('mainview.exportdonor', {
+      url: '/exportdonor',
+      controller: 'donarController',
+      templateUrl: 'templates/exportdonor.html'
     });
 
     /*.state('mainview.subcategory', {
