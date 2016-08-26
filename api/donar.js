@@ -195,4 +195,33 @@ router.get('/getallFilterdonarlist', function(req, res) {
         }
     });
 });
+
+
+router.get('/donarlistbycorporate', function(req, res) {
+  //console.log("getalldonarlist");
+  var sql = "SELECT donors.donorid,donors.donorname,donors.preftitle,donors.nominationcode,donors.donortype,donor_roles.roleid,donor_roles.role_name,donor_roles.imageurl FROM donors INNER JOIN donor_roles ON donors.roleid=donor_roles.roleid WHERE donortype = " + "'Corporate Donors'" ;
+    //console.log("query:",sql);
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.jsonp(response);
+        }
+    });
+});
+
+router.get('/donarlistbyIndividual', function(req, res) {
+  //console.log("getalldonarlist");
+  var sql = "SELECT donors.donorid,donors.donorname,donors.preftitle,donors.nominationcode,donors.donortype,donor_roles.roleid,donor_roles.role_name,donor_roles.imageurl FROM donors INNER JOIN donor_roles ON donors.roleid=donor_roles.roleid WHERE donortype = " + "'Individual Donors'" ;
+    //console.log("query:",sql);
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.jsonp(response);
+        }
+    });
+});
+
+
 module.exports = router;

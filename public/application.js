@@ -6,7 +6,7 @@ var ApplicationModuleName = 'Lfs';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap','ngAnimate']);
+var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap','ngAnimate','angularUtils.directives.dirPagination']);
 
 /*SampleApplicationModule.run(function($rootScope, AuthService, $state, $location, store) {
 
@@ -108,6 +108,11 @@ angular.module('Lfs').controller('MainController', [
         };
 
 
+          $scope.currentPage = 1;
+          $scope.currentPage1 = 1;
+          $scope.pageSize = 1;
+          $scope.pageSize1 = 3;
+
         $scope.currState = $state;
         $scope.$watch('currState.current.name', function(newValue, oldValue) {
             $scope.isstate = newValue;
@@ -124,17 +129,19 @@ angular.module('Lfs').controller('MainController', [
         $scope.flag = 1;
         $scope.donortype = 'Individual Donors';
 
-        $scope.getalldonarlist = function(){
+       /* $scope.getalldonarlist = function(){
                $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
                     $scope.alldonorList1 = res;
                     var filtercategory = _.where(res,{'donortype':$scope.donortype});
                     $scope.alldonorList = filtercategory;
-                    
+                    $scope.pageChangeHandler(filtercategory.length);
                }).error(function(error) {
                     console.log("Error", error);
                });
         };
-        $scope.getalldonarlist();
+        $scope.getalldonarlist();*/
+
+        
 
         $scope.setflag = function(flag){
             if(flag === 1){
@@ -142,8 +149,9 @@ angular.module('Lfs').controller('MainController', [
             } else {
                 $scope.donortype = 'Corporate Donors';
             }
-            var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
-             $scope.alldonorList = filtercategory;
+
+            /*var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
+             $scope.alldonorList = filtercategory;*/
         }
          $scope.imageURL = imageURL;
 
@@ -159,6 +167,34 @@ angular.module('Lfs').controller('MainController', [
                
         }
 
-            
+         $scope.getdonarlistbycorporate = function(){
+               $http.get(baseUrl + 'donar/donarlistbycorporate').success(function(res, req){
+                    //console.log("res:",res);
+                    $scope.corporatelist = res;
+               }).error(function(error) {
+                    console.log("Error", error);
+               });
+        };
+        $scope.getdonarlistbycorporate(); 
+
+        $scope.pageChangeHandler = function(num) {
+            console.log('meals page changed to ' + num);
+        };
+
+        $scope.getdonarlistbyIndividual = function(){
+               $http.get(baseUrl + 'donar/donarlistbyIndividual').success(function(res, req){
+                    console.log("res:",res);
+                    $scope.Individual = res;
+               }).error(function(error) {
+                    console.log("Error", error);
+               });
+        };
+        $scope.getdonarlistbyIndividual();
+
+        $scope.pageChangeHandler1 = function(num) {
+            console.log("pageChangeHandler1");
+            console.log('meals page changed to ' + num);
+        };
+
     }
 ]);

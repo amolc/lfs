@@ -26,7 +26,7 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="tab_default_1" ng-if="donortype == 'Individual Donors'">
-                                    <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
+                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize" pagination-id="Individual_D" current-page="currentPage">
                                         <div class="well" ng-mouseover="callingover(donor);showPopover = true;" ng-mouseleave="showPopover=false;">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
@@ -54,10 +54,18 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="container text-center">
+                                                <div class="text-center">
+                                                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler1(newPageNumber1)" template-url="templates/dirPagination.tpl.html" pagination-id="Individual_D"></dir-pagination-controls>
+
+                                                </div>
+                                        </div>
                                     </div>
+                                   
                                 </div>
                                 <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
-                                    <div class="col-md-4 col-sm-6" ng-repeat="donor in alldonorList">
+                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1" pagination-id="Corporate_D" current-page="currentPage1" >
                                         <div class="well" ng-mouseover="callingover(donor);showPopover = true;" ng-mouseleave="showPopover=false;">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
@@ -71,8 +79,9 @@
                                                 <p ng-if="donor.preftitle.length > '50'">{{donor.preftitle | limitTo: 50}}..</p>
                                             </div>
                                         </div>
+                                        
 
-                                        <div class="popover" ng-show="showPopover" data-placement="bottom">
+                                        <div class="popover" ng-show="showPopover" >
                                             <div class="well">
                                                 <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                                 <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
@@ -85,6 +94,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        </div>
+                                        <div class="container text-center">
+                                                <div class="text-center">
+                                                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="templates/dirPagination.tpl.html" pagination-id="Corporate_D"></dir-pagination-controls>
+                                                </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +108,13 @@
                 </div>
             </div>
         </div>
-        <div class="container text-center">
+       <!--  <div class="container text-center">
+        <div class="other-controller">
+          <small>this is in "OtherController"</small>
+          <div class="text-center">
+          <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+        </div>
             <ul class="pagination">
                 <li class="disabled"><a href="#">«</a></li>
                 <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
@@ -103,6 +124,7 @@
                 <li><a href="#">5</a></li>
                 <li><a href="#">»</a></li>
             </ul>
-        </div>
+        </div> -->
+
     </section>
 </div>
