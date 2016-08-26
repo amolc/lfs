@@ -6,7 +6,7 @@ var ApplicationModuleName = 'Lfs';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap']);
+var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap','ngAnimate']);
 
 /*SampleApplicationModule.run(function($rootScope, AuthService, $state, $location, store) {
 

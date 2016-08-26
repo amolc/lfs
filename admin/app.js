@@ -121,7 +121,7 @@ angular.module('adminPanel').controller('MainController', [
               'login': true,
               'email' : res.record[0].email,
               'id': res.record[0].id,
-              'name': res.record[0].name
+              'username': res.record[0].username
             }; 
             store.set('adminsession', adminsession);
             console.log("adminsession:", adminsession);

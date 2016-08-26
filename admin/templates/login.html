@@ -23,12 +23,20 @@
           <div class="row">
             <div class="col-lg-12">
               <form id="loginForm" name="loginForm" data-ng-submit="userlogin(user,loginForm.$valid)" role="form" style="display: block;" novalidate>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <input type="email" name="username" id="username" ng-model="user.email" tabindex="1" class="form-control" placeholder="Email" value="" data-ng-pattern="/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i" required>
                   <span>
                   <div data-ng-messages="loginForm.$submitted && loginForm.username.$error" role="alert" class="error_msg">
                       <div data-ng-message="required">Please Enter Email Address</div>
                       <div data-ng-message="pattern">Enter Valid Email Address</div>
+                  </div>
+                </span>
+                </div> -->
+                <div class="form-group">
+                  <input type="text" name="username" id="username" ng-model="user.username" tabindex="1" class="form-control" placeholder="Username" required>
+                  <span>
+                  <div data-ng-messages="loginForm.$submitted && loginForm.username.$error" role="alert" class="error_msg">
+                      <div data-ng-message="required">Please Enter User Name</div>
                   </div>
                 </span>
                 </div>

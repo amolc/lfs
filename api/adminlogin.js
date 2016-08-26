@@ -15,11 +15,11 @@ var transporter = env.transporter;*/
 router.post('/adminlogin', function(req, res) {
   console.log("adminlogin");
  //console.log("req.body:",req.body);
-  var email = req.body.email;
-  //var username = req.body.username;
+  //var email = req.body.email;
+  var username = req.body.username;
   var password=md5(req.body.password);
   AdminCRUD.load({
-    email : email,
+    username : username,
     password : password
   }, function (err, val) {
     console.log('Error in Login',err);
