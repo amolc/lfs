@@ -29,6 +29,10 @@ SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', function
     .state('mainview.donar', {
       url: '/donar',
       templateUrl: 'templates/donar.html'
+    })
+    .state('mainview.importdonor', {
+      url: '/importdonor',
+      templateUrl: 'templates/importdonor.html'
     });
 
     /*.state('mainview.subcategory', {

@@ -146,7 +146,7 @@ angular.module('adminPanel').controller('donarController', [
 
         $scope.searchbyoption = function(searchForm,searchobj){
             if(searchForm.$valid){
-                searchobj.id =$scope.adminsession.id;
+                searchobj.id = $scope.adminsession.id;
                 $http.post(baseUrl + 'donar/searchdonor' , searchobj).success(function(res, req){
                         //console.log("res:",res);
                         $scope.donarlist = res;
@@ -155,6 +155,81 @@ angular.module('adminPanel').controller('donarController', [
                 });
             }
         }
- 
+
+        $scope.uploadDonarCsv = function() {
+        if ($scope.csvFile === undefined) {
+            // $scope.AsmselectFilemsg = 'Please Select CSV File';
+            // $scope.showAsmselectFilemsg = true;
+            // $timeout(function() {
+            //     $timeout(function() {
+            //         $scope.showAsmselectFilemsg = false;
+            //     }, 3000);
+            // }, 2000);
+
+        } else {
+
+            if ($scope.csvFile) {
+                Papa.parse($scope.csvFile, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: function(results) {
+                        //console.log(results);
+                        if (results.data.length > 0) {
+                            $scope.csvData = {
+                                id: $scope.adminsession.id,
+                                csvData: results.data
+                            };
+                            console.log("csv data:",$scope.csvData);
+                            $http.post(baseUrl + 'donar/donorImport', $scope.csvData).success(function(res) {
+                                console.log(res);
+                                if (res.status === false) {
+                                    $scope.showimporterrormsg = true;
+                                    $scope.importerrormsg = 'Records not imported';
+                                    $timeout(function() {
+                                        $scope.importerrormsg = false;
+                                    }, 3000);
+
+                                } else {
+                                    $scope.showimportmessageCsv = true;
+                                    $scope.showimportmsg = " Records successfully imported"; 
+                                    $timeout(function() {
+                                        $scope.showimportmessageCsv = false;
+                                    }, 3000);
+                                }
+                                $scope.getdonarlist();
+                                $scope.csvData = {};
+                                $scope.csvFile = '';
+                            }).error(function() {
+                                $scope.newsData = {};
+                            });
+                        } else {
+                            console.log("file select valid file");
+                        }
+                    }
+                });
+            } else {
+                $scope.PhysicianSelectFileMsg = 'Please Select CSV File';
+                $scope.showPhysicianSelectFileMsg = true;
+            }
+        }
+    };
+
+    $scope.donorImport = function(ele) {
+        $scope.csvFile = ele.files[0];
+        console.log("csvFile:",$scope.csvFile);
+        $scope.$apply();
+    };
+
+    $scope.csv = {
+        contact_name: '',
+        email: '',
+        id: $scope.adminsession.id
+    };
+
+    $scope.clearcsv = function functionName() {
+        $scope.csvFile = {};
+
+    };
+    
     }
 ]);

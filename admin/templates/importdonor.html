@@ -1,0 +1,27 @@
+<div class="container" style="width: 100%;" data-ng-controller="donarController">
+
+<div class="col-lg-12">
+	 <h3>IMPORT DONORS</h3>
+ 	 <form class="form-inline" name="importForm" novalidate>
+				<div class="form-group">
+					<input type="text" class="form-control" ng-model="csvFile.name" placeholder="import" style="cursor: default;
+					background: #fff;" disabled="">
+				</div>
+				<div class="btn btn-primary upload" value=" Upload" style="height: 35px;line-height: 1.7;">
+					Import
+					<input accept=".csv,text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="file_browse" onchange="angular.element(this).scope().donorImport(this)" type="file" />
+				</div>
+				<div style="margin-top: 10px;">
+					<button type="button" class="btn btn-primary" ng-click="uploadDonarCsv()">Save</button>
+					 <button type="button" class="btn accept " ng-click="clearcsv()">cancel</button>
+				</div>
+                <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
+                        <div class="text-danger" style="text-align: left;" ng-message="required">
+                            Select Search Option</div>
+                </div>
+                <a ng-href="http://node.fountaintechies.com:11000/assets/csv/sample.csv">Sample Csv file</a>
+                <p style="color:green;" ng-if="showimportmessageCsv">{{showimportmsg}}</p>
+                <p style="color:maroon;" ng-if="showimporterrormsg">{{importerrormsg}}</p>		
+          </form>
+</div>
+</div>

@@ -8,6 +8,7 @@ var env = require('./environment');
 var connection = env.Dbconnection;
 var Donar_Role = CRUD(connection,'donor_roles');
 var donar = CRUD(connection,'donors');
+var async = require('async');
 
 router.get('/getdonarsroll', function(req, res) {
   Donar_Role.load({}, function (err, val) {
@@ -143,6 +144,42 @@ router.post('/searchdonor', function(req, res) {
             console.log(error);
         } else {
             res.jsonp(response);
+        }
+    });
+});
+
+router.post('/donorImport', function(req, res) {
+    //console.log("req body:",req.body);
+    var csvData = req.body.csvData;
+    var i=0;
+    //console.log('req', csvData);
+    var status = '';
+    async.forEach(csvData, function(data, callback) {
+     // console.log("data:",data);
+        if (data.donorname === undefined && data.roleid === undefined && data.donortype === undefined) {
+            status = false;
+            callback();
+        } else {
+            var query = "INSERT INTO donors (donorname,donortype,nominationcode,preftitle,roleid,admin_id,created_on,modified_on) VALUES ('" + data.donorname + "','" + data.donortype + "'," + data.nominationcode + ",'" + data.preftitle + "','" + data.roleid + "','" + req.body.id + "'," + env.timestamp() + "," + env.timestamp() + ")";
+           // console.log("query:",query);
+            connection.query(query, function(err, dataL) {
+              //console.log('dataL',dataL);
+                if (!err) {
+                      status = true;
+                      i = ++i;
+                     callback();
+                } else {
+                    console.log('error while importing csv', err);
+                    status = false;
+                     callback();
+                }
+            });
+        }       
+    }, function(error) {
+      console.log('error async',error);
+        if (!error) {
+            console.log("status:",status);
+            res.jsonp({"status":status,count:i});
         }
     });
 });
