@@ -105,15 +105,15 @@ angular.module('adminPanel').controller('donarController', [
         };
 
 
-        $scope.getalldonarlist = function(){
-               $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
-                    $scope.alldonorList = res;
+        $scope.getallFilterdonarlist = function(){
+               $http.get(baseUrl + 'donar/getallFilterdonarlist').success(function(res, req){
+                    $scope.AllList = res;
                     console.log(res);
                }).error(function(error) {
                     console.log("Error", error);
                });
         };
-        $scope.getalldonarlist();
+        $scope.getallFilterdonarlist();
 
 
         $scope.clear = function(){

@@ -106,7 +106,7 @@ router.post('/deletedonor', function(req, res) {
 });
 
 router.get('/getalldonarlist', function(req, res) {
-  console.log("getalldonarlist");
+  //console.log("getalldonarlist");
   var sql = 'SELECT donors.donorid,donors.donorname,donors.preftitle,donors.nominationcode,donors.donortype,donor_roles.roleid,donor_roles.role_name,donor_roles.imageurl FROM donors INNER JOIN donor_roles ON donors.roleid=donor_roles.roleid';
     connection.query(sql, function(error, response) {
         if (error) {
@@ -184,5 +184,15 @@ router.post('/donorImport', function(req, res) {
     });
 });
 
-
+router.get('/getallFilterdonarlist', function(req, res) {
+  //console.log("getalldonarlist");
+  var sql = 'SELECT donors.donorid,donors.donorname,donors.preftitle,donors.nominationcode,donors.donortype,donor_roles.role_name FROM donors INNER JOIN donor_roles ON donors.roleid=donor_roles.roleid';
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.jsonp(response);
+        }
+    });
+});
 module.exports = router;
