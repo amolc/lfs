@@ -109,8 +109,8 @@ angular.module('Lfs').controller('MainController', [
 
         $scope.currentPage = 1;
         $scope.currentPage1 = 1;
-        $scope.pageSize = 1;
-        $scope.pageSize1 = 3;
+        $scope.pageSize = 6;
+        $scope.pageSize1 = 6;
 
         $scope.currState = $state;
         $scope.$watch('currState.current.name', function(newValue, oldValue) {
