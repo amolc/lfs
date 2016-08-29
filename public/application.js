@@ -6,7 +6,7 @@ var ApplicationModuleName = 'Lfs';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages','ui.bootstrap','ngAnimate','angularUtils.directives.dirPagination']);
+var SampleApplicationModule = angular.module('Lfs', ['ui.router', 'angular-storage', 'ngMessages', 'ui.bootstrap', 'ngAnimate', 'angularUtils.directives.dirPagination']);
 
 /*SampleApplicationModule.run(function($rootScope, AuthService, $state, $location, store) {
 
@@ -100,18 +100,17 @@ angular.module('Lfs').controller('MainController', [
     '$window',
     '$modal',
     '$log',
-    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, $window , $modal , $log) {
+    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, $window, $modal, $log) {
         $scope.userSession = store.get('userSession') || {};
 
         $scope.init = function() {
 
         };
 
-
-          $scope.currentPage = 1;
-          $scope.currentPage1 = 1;
-          $scope.pageSize = 1;
-          $scope.pageSize1 = 3;
+        $scope.currentPage = 1;
+        $scope.currentPage1 = 1;
+        $scope.pageSize = 1;
+        $scope.pageSize1 = 3;
 
         $scope.currState = $state;
         $scope.$watch('currState.current.name', function(newValue, oldValue) {
@@ -125,26 +124,26 @@ angular.module('Lfs').controller('MainController', [
 
         // modal text
         $scope.ny_logtype = $sce.trustAsHtml('Har ert boende ingen egen logotyp eller är det dags att förnya den ni har? En modern och professionell logotyp stärker samhörigheten och engagemanget inom boendet.<br><br>Genom boappa kan ni snabbt och enkelt få en ny och snygg logotyp. Klicka på "Läs mer" för att se exempel och pris.');
-        
+
         $scope.flag = 1;
         $scope.donortype = 'Individual Donors';
 
-       /* $scope.getalldonarlist = function(){
-               $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
-                    $scope.alldonorList1 = res;
-                    var filtercategory = _.where(res,{'donortype':$scope.donortype});
-                    $scope.alldonorList = filtercategory;
-                    $scope.pageChangeHandler(filtercategory.length);
-               }).error(function(error) {
-                    console.log("Error", error);
-               });
-        };
-        $scope.getalldonarlist();*/
+        /* $scope.getalldonarlist = function(){
+                $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
+                     $scope.alldonorList1 = res;
+                     var filtercategory = _.where(res,{'donortype':$scope.donortype});
+                     $scope.alldonorList = filtercategory;
+                     $scope.pageChangeHandler(filtercategory.length);
+                }).error(function(error) {
+                     console.log("Error", error);
+                });
+         };
+         $scope.getalldonarlist();*/
 
-        
 
-        $scope.setflag = function(flag){
-            if(flag === 1){
+
+        $scope.setflag = function(flag) {
+            if (flag === 1) {
                 $scope.donortype = 'Individual Donors';
             } else {
                 $scope.donortype = 'Corporate Donors';
@@ -153,47 +152,63 @@ angular.module('Lfs').controller('MainController', [
             /*var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
              $scope.alldonorList = filtercategory;*/
         }
-         $scope.imageURL = imageURL;
+        $scope.imageURL = imageURL;
 
-         $scope.showPopover=false; 
+        $scope.showPopover = false;
 
-         $scope.callingover =  function(obj){
-            console.log("abc:",obj);
-            console.log("calling hover....");
-           $scope.popover = {
+        $scope.callingover = function(obj, id) {
+            $scope.id = id;
+            $scope.popover = {
                 title: obj.donorname,
-                message: obj.preftitle
+                message: obj.preftitle,
+                imageurl: obj.imageurl,
+                id: id
             };
-               
+
         }
 
-         $scope.getdonarlistbycorporate = function(){
-               $http.get(baseUrl + 'donar/donarlistbycorporate').success(function(res, req){
-                    //console.log("res:",res);
-                    $scope.corporatelist = res;
-               }).error(function(error) {
-                    console.log("Error", error);
-               });
+        $scope.getdonarlistbycorporate = function() {
+            $http.get(baseUrl + 'donar/donarlistbycorporate').success(function(res, req) {
+                $scope.corporatelist = res;
+            }).error(function(error) {
+                console.log("Error", error);
+            });
         };
-        $scope.getdonarlistbycorporate(); 
+        $scope.getdonarlistbycorporate();
 
         $scope.pageChangeHandler = function(num) {
             console.log('meals page changed to ' + num);
         };
 
-        $scope.getdonarlistbyIndividual = function(){
-               $http.get(baseUrl + 'donar/donarlistbyIndividual').success(function(res, req){
-                    console.log("res:",res);
-                    $scope.Individual = res;
-               }).error(function(error) {
-                    console.log("Error", error);
-               });
+        $scope.getdonarlistbyIndividual = function() {
+            $http.get(baseUrl + 'donar/donarlistbyIndividual').success(function(res, req) {
+                $scope.Individual = res;
+            }).error(function(error) {
+                console.log("Error", error);
+            });
         };
         $scope.getdonarlistbyIndividual();
 
         $scope.pageChangeHandler1 = function(num) {
             console.log("pageChangeHandler1");
             console.log('meals page changed to ' + num);
+        };
+
+        // create the timer variable
+        var timer;
+
+        // mouseenter event
+        $scope.showIt = function(donor, id) {
+            timer = $timeout(function() {
+                $scope.showPopover = true;
+                $scope.callingover(donor, id)
+            }, 500);
+        };
+
+        // mouseleave event
+        $scope.hideIt = function() {
+            $timeout.cancel(timer);
+            $scope.showPopover = false;
         };
 
     }
