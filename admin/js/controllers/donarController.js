@@ -16,6 +16,10 @@ angular.module('adminPanel').controller('donarController', [
         };
         $scope.adminsession = store.get('adminsession') || {};
 
+
+        $scope.currentPage = 1;
+        $scope.pageSize = 5;
+
         $scope.getdonarroll = function(){
            $http.get(baseUrl + 'donar/getdonarsroll').success(function(res, req){
                 $scope.donarrolls = res;
@@ -69,8 +73,7 @@ angular.module('adminPanel').controller('donarController', [
                         //console.log("donarlist:",$scope.donarlist);
                         $scope.AddDonarForm.$setPristine();
                         $scope.resetform();
-                        //$scope.getdonarlist();
-                       // document.getElementById("AddDonarFrm").reset();
+                        $scope.getdonarlist();
                     }
                     
                 }).error(function(error) {
@@ -97,6 +100,7 @@ angular.module('adminPanel').controller('donarController', [
         $scope.getdonarlist = function(){
             var id = $scope.adminsession.id
            $http.get(baseUrl + 'donar/getdonarlist/' + id).success(function(res, req){
+                console.log(res);
                 $scope.donarlist = res;
                 var filtercategory = _.where(res,{'donortype':$scope.donortype});
            }).error(function(error) {
@@ -108,7 +112,7 @@ angular.module('adminPanel').controller('donarController', [
         $scope.getallFilterdonarlist = function(){
                $http.get(baseUrl + 'donar/getallFilterdonarlist').success(function(res, req){
                     $scope.AllList = res;
-                    console.log(res);
+                    //console.log(res);
                }).error(function(error) {
                     console.log("Error", error);
                });

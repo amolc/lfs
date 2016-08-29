@@ -117,19 +117,21 @@
     <table id="table" class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Profile title</th>
-          <th>Nomination code</th>
+          <th>Ref.ID</th>
+          <th>Donor Type</th>
+          <th>Donor Category</th>
+          <th>Donor Name</th>
+          <th>Preferred title</th>
           <th style="width: 90px;">Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="don in donarlist">
-          <th>{{don.donorname}}</th>
-          <th>{{don.donortype}}</th>
-          <th>{{don.preftitle}}</th>
+        <tr dir-paginate="don in donarlist | itemsPerPage: pageSize">
           <th>{{don.nominationcode}}</th>
+          <th>{{don.role_name}}</th>
+          <th>{{don.donortype}}</th>
+          <th>{{don.donorname}}</th>
+          <th>{{don.preftitle}}</th>
           <th>
             <span class="">
               <i class="glyphicon glyphicon-pencil" style="cursor:pointer" ng-click="editDonar(don)"></i>&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -139,6 +141,12 @@
         </tr>
       </tbody>
     </table>
+    <div class="container text-center">
+      <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+      </div>
+    </div>
+
   </div>
 
 <div class="modal fade" id="myModal" role="dialog">
@@ -159,4 +167,5 @@
         </div>
     </div>
 </div>
+
 </div>

@@ -7,7 +7,7 @@ var ApplicationModuleName = 'adminPanel';
 
 
 // Create the main application
-var SampleApplicationModule = angular.module('adminPanel', ['ui.router','ngMessages','ngAnimate','ui.bootstrap','angular-storage','ngSanitize', 'ngCsv']);
+var SampleApplicationModule = angular.module('adminPanel', ['ui.router','ngMessages','ngAnimate','ui.bootstrap','angular-storage','ngSanitize', 'ngCsv' , 'ngAnimate', 'angularUtils.directives.dirPagination']);
 
 
 SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {

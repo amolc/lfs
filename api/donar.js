@@ -47,12 +47,20 @@ donar.create({
 });
 
 router.get('/getdonarlist/:id', function(req, res) {
-  //console.log("params:",req.params.id);
-  donar.load({'admin_id': req.params.id}, function (err, val) {
-  		//console.log("err:",err);
-  		//console.log("val:",val);
+
+  /*donar.load({'admin_id': req.params.id}, function (err, val) {
        res.jsonp(val);
-  });
+  });*/
+  var sql = "SELECT donors.donorid,donors.donorname,donors.preftitle,donors.nominationcode,donors.donortype,donors.roleid ,donor_roles.role_name FROM donors INNER JOIN donor_roles ON donors.roleid=donor_roles.roleid where donors.admin_id = " + req.params.id + " ORDER by donors.donorid DESC";
+    //console.log("sql:",sql);
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.jsonp(response);
+        }
+    });
+
 });
 
 router.post('/updatedonar', function(req, res) {
