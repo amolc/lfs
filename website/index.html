@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:ng="http://angularjs.org" data-ng-app="FrenchLfs">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>LFS</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">    -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- lib-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+    <script src="lib/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="lib/angular-storage.min.js"></script>
+    <script src="lib/angular-messages.min.js"></script>
+    <script src="lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="lib/underscore-min.js"></script>
+    <script data-require="ui-bootstrap@*" data-semver="0.10.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    <script type="text/javascript" src="lib/dirPagination.js"></script>
+    <!-- <script type="text/javascript" src="templates/dirPagination.tpl.html"></script> -->
+
+    <script src="config/config.js"></script>
+    <script type="text/javascript" src="application.js"></script>
+
+  </head>
+
+  <body data-ng-controller="MainController">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a href="#"><img src="img/left.svg"> Back to School Website</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a style="padding-right: 0px;">Language</a></li>
+            <li><a href="#"><img src="img/french.png"> French</a></li>
+            <li><a href="#" class="active"><img src="img/english.png"> English</a></a></li>           
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>  <!-- /.container-fluid -->
+    <nav class="navbar navbar-default navbar-fixed-top"> 
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" ui-sref="home"><img src="img/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li ui-sref-active="active"><a ui-sref="home" >Home</a></li>
+            <li ui-sref-active="active"><a ui-sref="donars">Our Esteemed Donors </a></li>
+            <li ui-sref-active="active"><a ui-sref="brochure">Download Brochure</a></li>
+            <li><a class="btn btn-primary btn-lg" ui-sref="donation">Donate Now</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <div ui-view></div>
+
+
+    <footer>
+        <nav class="navbar navbar-default"> 
+          <div class="container">
+              <a class="navbar-brand" href="#"><img src="img/logo.png"></a>
+              <ul class="nav navbar-nav navbar-right">
+                 <li class="active"><a href="#">Home</a></li>
+
+                </li>
+                <li><a ui-sref="donars">Our Esteemed Donors </a></li>
+                <li><a ui-sref="brochure">Download Brochure</a></li>
+                <li><button class="btn btn-primary btn-lg" ui-sref="donation">Donate Now</button></li>
+                <li><img src="img/footer-map.png"></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="sub-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p>Lycée Français de Singapour © - 3000 Ang Mo Kio Avenue 3, Singapore 569928
+                    Tél : (65) 6805 0000 - Fax : (65) 6805 0199 - Courriel : administration@lfs.edu.sg
+                    No. of Company : 198004581H</p>
+                    <p>Photography credits - Lionel Bottereau</p>
+              </div>
+              <div class="col-md-6" align="right">
+                <p class="top-space">Download Brochure</p>
+                <p>Download Code of Ethical Principles and Standards</p>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p>Copyright © 2016 Lycée Français de Singapour</p>
+              </div>
+              <div class="col-md-6" align="right">
+                <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook fa-2x social" aria-hidden="true"></i></a>
+                  <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter fa-2x social"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer>
+    <!-- /container -->
+    
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+
+  </body>
+</html>

@@ -89,6 +89,7 @@ app.use('/api', express.static(__dirname + '/api'));
 app.use('/admin', express.static(__dirname + '/admin'));
 app.use('/assets/images', express.static(__dirname + '/assets/images'));
 app.use('/assets/csv', express.static(__dirname + '/assets/csv'));
+app.use('/website', express.static(__dirname + '/website'));
 
 var adminlogin = require('./api/adminlogin.js');
 var donar = require('./api/donar.js');

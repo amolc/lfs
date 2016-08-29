@@ -1,0 +1,107 @@
+<div>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <img src="img/listing-banner.png" class="img-responsive" style="margin: 0 auto;">
+        </div>
+    </div>
+    <section class="donors">
+        <div class="container">
+            <h2>OUR ESTEEMED DONORS</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tabbable-panel">
+                        <div class="tabbable-line">
+                            <ul class="nav nav-tabs ">
+                                <li class="active">
+                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1)">
+              Individual Donors </a>
+                                </li>
+                                <li>
+                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2)">
+              Corporate Donors</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="row tab-pane active" id="tab_default_1" ng-if="donortype == 'Individual Donors'">
+                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
+                                        <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
+                                            <div class="span3">
+                                                <h3 ng-if="donor.donorname.length < '10'">{{donor.donorname | limitTo: 10}}</h3>
+                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 10}}..</h3>
+                                                <p ng-if="donor.preftitle.length < '40'">{{donor.preftitle | limitTo: 40}}</p>
+                                                <p ng-if="donor.preftitle.length > '40'">{{donor.preftitle | limitTo: 40}}..</p>
+                                            </div>
+                                        </div>
+                                        <div class="popover" ng-show="showPopover && id == $index">
+                                            <div class="well">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'gold.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'silver.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'bronze.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
+                                                <div class="span3">
+                                                    <h3>{{popover.title}}</h3>
+                                                    <p>{{popover.message}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--ng-repeat end-->
+                                </div>
+                                <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
+                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
+                                        <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
+                                            <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
+                                            <div class="span3">
+                                                <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
+                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3>
+                                                <p ng-if="donor.preftitle.length < '50'">{{donor.preftitle | limitTo: 50}}</p>
+                                                <p ng-if="donor.preftitle.length > '50'">{{donor.preftitle | limitTo: 50}}..</p>
+                                            </div>
+                                        </div>
+                                        <div class="popover" ng-show="showPopover && id == $index">
+                                            <div class="well">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'gold.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'silver.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'bronze.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
+                                                <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
+                                                <div class="span3">
+                                                    <h3>{{popover.title}}</h3>
+                                                    <p>{{popover.message}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ng-repeat end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="container text-center" ng-if="donortype == 'Corporate Donors'">
+    <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="templates/dirPagination.tpl.html" pagination-id="Corporate_D"></dir-pagination-controls>
+    </div>
+</div>
+<div class="container text-center" ng-if="donortype == 'Individual Donors'">
+    <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="templates/dirPagination.tpl.html" pagination-id="Individual_D"></dir-pagination-controls>
+    </div>
+</div>
