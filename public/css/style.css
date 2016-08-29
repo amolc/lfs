@@ -763,8 +763,8 @@ input {
     top: 0px;
     display: block;
     padding: 0 20px;
-    width: 370px;
-    max-width: 400px;
+    width: 500px;
+    max-width: 600px;
 }
 .popover .well {
     box-shadow: none;
