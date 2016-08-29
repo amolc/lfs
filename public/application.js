@@ -211,5 +211,28 @@ angular.module('Lfs').controller('MainController', [
             $scope.showPopover = false;
         };
 
+        $scope.search = function(searchForm, searchobj, type) {
+            if (searchForm.$valid) {
+                searchobj.type = type;
+                $http.post(baseUrl + 'donar/searchallinone', searchobj).success(function(res, req) {
+                    if (res.status == true) {
+                        if (res.typeof == 'Individual') {
+                            $scope.Individual = res.record;
+
+                        } else if (res.typeof == 'Corporate') {
+                            $scope.corporatelist = res.record;
+
+                        }
+                        
+                    }else{
+                        console.log("Error !!!");
+                    }
+                }).error(function(error) {
+                    console.log("Error", error);
+                });
+            }
+
+        }
+
     }
 ]);

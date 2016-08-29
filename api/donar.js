@@ -276,5 +276,35 @@ router.get('/donarlistbyIndividual', function(req, res) {
     });
 });
 
+router.post('/searchallinone', function(req, res) {
+    console.log("searchallinone");
+    console.log("req.body:",req.body);
+    var typeofsearch = req.body.typeofsearch;
+    var type = req.body.type;
+    var value = req.body.value;
+
+    if (typeofsearch === 'name') {
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+        //console.log("name query:",sql);
+    } else if (typeofsearch === 'title') {
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+        //console.log("title query:",sql);
+    } else {
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+        //console.log("search by nominationcode");
+    }
+    connection.query(sql, function(error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+             responsedata = {
+                    status: true,
+                    typeof : type,
+                    record: response
+             }
+            res.jsonp(responsedata);
+        }
+    });
+});
 
 module.exports = router;
