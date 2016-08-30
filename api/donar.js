@@ -308,7 +308,7 @@ router.get('/donarlistbyIndividual', function(req, res) {
 });
 
 router.post('/searchallinone', function(req, res) {
-    console.log("searchallinone req.body:", req.body);
+    //console.log("searchallinone req.body:", req.body);
 
     //var value = req.body.value;
     // var typeofsearch = req.body.typeofsearch;
@@ -316,7 +316,7 @@ router.post('/searchallinone', function(req, res) {
     var type = req.body.type;
 
     var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%" + title + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
-    console.log("sql query:", sql);
+    //console.log("sql query:", sql);
     /*if (typeofsearch === 'name') {
         var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
     } else if (typeofsearch === 'title') {
@@ -328,11 +328,23 @@ router.post('/searchallinone', function(req, res) {
         if (error) {
             console.log(error);
         } else {
-            responsedata = {
-                status: true,
-                typeof: type,
-                record: response
+            //console.log("response:",response);
+            if(response == '' || response == null){
+                console.log("no response");
+                responsedata = {
+                    status: false,
+                    typeof: type,
+                    record: response
+                }
+            }else{
+                console.log("getting response");
+                responsedata = {
+                    status: true,
+                    typeof: type,
+                    record: response
+                }
             }
+           
             res.jsonp(responsedata);
         }
     });

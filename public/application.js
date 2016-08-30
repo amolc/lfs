@@ -224,9 +224,13 @@ angular.module('Lfs').controller('MainController', [
                             $scope.corporatelist = res.record;
 
                         }
-                        //$scope.searchobj = {};
-                    }else{
-                        console.log("Error !!!");
+
+                    } else {
+                        if (res.typeof == 'Individual') {
+                            $scope.getdonarlistbyIndividual();
+                        } else if (res.typeof == 'Corporate') {
+                            $scope.getdonarlistbycorporate();
+                        }
                     }
                 }).error(function(error) {
                     console.log("Error", error);
@@ -234,9 +238,9 @@ angular.module('Lfs').controller('MainController', [
             }
 
         }
-        
 
-    
+
+
 
     }
 ]);
