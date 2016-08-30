@@ -28,26 +28,28 @@
                                 <div class="row tab-pane active" id="tab_default_1" ng-if="donortype == 'Individual Donors'">
                                     <div class="col-md-12" style="padding-bottom:20px;">
                                         <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Individual')" novalidate>
-                                            <div class="form-group">
+                                           <!--  <div class="form-group">
                                                 <select class="form-control" name="optiontype" ng-model="searchobj.typeofsearch" required>
                                                     <option value="" disabled selected hidden>Select Search By</option>
                                                     <option value="name">Name</option>
                                                     <option value="title">title</option>
                                                     <option value="nomination_code">Nomination code</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search text" name="searchtext" ng-model="searchobj.value" required>
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
+
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
-                                                <div class="text-danger" style="text-align: left;" ng-message="required">
-                                                    Select Search Option</div>
-                                            </div>
-                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error" class="pull-right">
+                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
                                                 <div class="text-danger" ng-message="required">
                                                                 Enter the text</div>
                                             </div>
+                                            <!-- <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
+                                                <div class="text-danger" style="text-align: left;" ng-message="required">
+                                                    Select Search Option</div>
+                                            </div> -->
+                                            
                                             <!-- {{searchForm}} -->
                                         </form>
                                     </div>
@@ -73,8 +75,8 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
-                                                    <h3>{{popover.title}}</h3>
-                                                    <p>{{popover.message}}</p>
+                                                    <h3>{{popover.message}}</h3>
+                                                   <!--  <p>{{popover.message}}</p> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -84,22 +86,22 @@
                                 <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
                                      <div class="col-md-12" style="padding-bottom:20px;">
                                         <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Corporate')" id="corp" novalidate>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <select class="form-control" name="optiontype" ng-model="searchobj.typeofsearch" required>
                                                     <option value="" disabled selected hidden>Select Search By</option>
                                                     <option value="name">Name</option>
                                                     <option value="title">title</option>
                                                     <option value="nomination_code">Nomination code</option>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search text" name="searchtext" ng-model="searchobj.value" required>
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
+                                           <!--  <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
                                                 <div class="text-danger" style="text-align: left;" ng-message="required">
                                                     Select Search Option</div>
-                                            </div>
+                                            </div> -->
                                             <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error" class="pull-right">
                                                 <div class="text-danger" ng-message="required">
                                                                 Enter the text</div>
@@ -129,8 +131,8 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
-                                                    <h3>{{popover.title}}</h3>
-                                                    <p>{{popover.message}}</p>
+                                                    <h3>{{popover.message}}</h3>
+                                                   <!--  <p>{{popover.message}}</p> -->
                                                 </div>
                                             </div>
                                         </div>

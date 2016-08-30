@@ -212,6 +212,7 @@ angular.module('Lfs').controller('MainController', [
         };
 
         $scope.search = function(searchForm, searchobj, type) {
+            //console.log("searchobj:",searchobj);
             if (searchForm.$valid) {
                 searchobj.type = type;
                 $http.post(baseUrl + 'donar/searchallinone', searchobj).success(function(res, req) {
@@ -223,7 +224,7 @@ angular.module('Lfs').controller('MainController', [
                             $scope.corporatelist = res.record;
 
                         }
-                        
+                        //$scope.searchobj = {};
                     }else{
                         console.log("Error !!!");
                     }
@@ -233,6 +234,9 @@ angular.module('Lfs').controller('MainController', [
             }
 
         }
+        
+
+    
 
     }
 ]);
