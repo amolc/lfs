@@ -98,14 +98,15 @@
                                                 <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
+                                             <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                                <div class="text-danger" ng-message="required">
+                                                Enter the text</div>
+                                            </div>
                                            <!--  <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
                                                 <div class="text-danger" style="text-align: left;" ng-message="required">
                                                     Select Search Option</div>
                                             </div> -->
-                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error" class="pull-right">
-                                                <div class="text-danger" ng-message="required">
-                                                                Enter the text</div>
-                                            </div>
+                                           
                                             <!-- {{searchForm}} -->
                                         </form>
                                     </div>
