@@ -69,6 +69,11 @@ SampleApplicationModule.config(['$urlRouterProvider', '$stateProvider', 'storePr
         templateUrl: 'templates/donation.html',
     })
 
+    .state('paypal', {
+        url: '/paypal',
+        templateUrl: 'templates/paypal.html'
+    });
+
 
 
 }]);

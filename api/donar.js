@@ -328,16 +328,14 @@ router.post('/searchallinone', function(req, res) {
         if (error) {
             console.log(error);
         } else {
-            //console.log("response:",response);
+            
             if(response == '' || response == null){
-                console.log("no response");
                 responsedata = {
                     status: false,
                     typeof: type,
                     record: response
                 }
             }else{
-                console.log("getting response");
                 responsedata = {
                     status: true,
                     typeof: type,
