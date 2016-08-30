@@ -833,6 +833,7 @@ select {
     color: #ffffff;
 }
 
-.btn .btn-web :hover {
-    color: #ffffff;
+.btn-web.focus, .btn-web:focus, .btn-web:hover {
+    background: #3884cd;
+    color: #fff;
 }
