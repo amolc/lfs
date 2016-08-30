@@ -236,5 +236,7 @@ angular.module('FrenchLfs').controller('MainController', [
 
         }
 
+        $scope.pdfURL = pdfURL;
+
     }
 ]);
