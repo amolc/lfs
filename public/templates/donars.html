@@ -63,8 +63,8 @@
                                             <div class="span3">
                                                 <!--  <h3 ng-if="donor.donorname.length < '10'">{{donor.donorname | limitTo: 10}}</h3>
                                                 <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 10}}..</h3> -->
-                                                <p ng-if="donor.preftitle.length < '50'"><b>{{donor.preftitle | limitTo: 50}}</b></p>
-                                                <p ng-if="donor.preftitle.length > '50'"><b>{{donor.preftitle | limitTo: 50}}</b>..</p>
+                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</h3>
+                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
                                         <div class="popover" ng-show="showPopover && id == $index">
@@ -120,8 +120,8 @@
                                             <div class="span3">
                                                 <!--  <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
                                                 <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3> -->
-                                                <p ng-if="donor.preftitle.length < '50'"><b>{{donor.preftitle | limitTo: 50}}</b></p>
-                                                <p ng-if="donor.preftitle.length > '50'"><b>{{donor.preftitle | limitTo: 50}}</b>..</p>
+                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</b></h3>
+                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
                                         <div class="popover" ng-show="showPopover && id == $index">

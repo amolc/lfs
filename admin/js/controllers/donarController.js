@@ -40,7 +40,6 @@ angular.module('adminPanel').controller('donarController', [
         
 
         $scope.addupdatedonar = function(AddDonarForm){
-            console.log(AddDonarForm);
             if(AddDonarForm.$valid){
                 if($scope.donar.donorid > 0){
                     $scope.updatedonar();
@@ -100,7 +99,6 @@ angular.module('adminPanel').controller('donarController', [
         $scope.getdonarlist = function(){
             var id = $scope.adminsession.id
            $http.get(baseUrl + 'donar/getdonarlist/' + id).success(function(res, req){
-                console.log(res);
                 $scope.donarlist = res;
                 var filtercategory = _.where(res,{'donortype':$scope.donortype});
            }).error(function(error) {
@@ -112,7 +110,6 @@ angular.module('adminPanel').controller('donarController', [
         $scope.getallFilterdonarlist = function(){
                $http.get(baseUrl + 'donar/getallFilterdonarlist').success(function(res, req){
                     $scope.AllList = res;
-                    //console.log(res);
                }).error(function(error) {
                     console.log("Error", error);
                });
@@ -121,7 +118,6 @@ angular.module('adminPanel').controller('donarController', [
 
 
         $scope.clear = function(){
-            console.log("calling statereload");
             $state.reload();
         }
           
@@ -165,7 +161,6 @@ angular.module('adminPanel').controller('donarController', [
             if(searchForm.$valid){
                 searchobj.id = $scope.adminsession.id;
                 $http.post(baseUrl + 'donar/searchdonor' , searchobj).success(function(res, req){
-                        //console.log("res:",res);
                         $scope.donarlist = res;
                     }).error(function(error) {
                         console.log("Error", error);
@@ -190,15 +185,14 @@ angular.module('adminPanel').controller('donarController', [
                     header: true,
                     skipEmptyLines: true,
                     complete: function(results) {
-                        //console.log(results);
+
                         if (results.data.length > 0) {
                             $scope.csvData = {
                                 id: $scope.adminsession.id,
                                 csvData: results.data
                             };
-                            //console.log("csv data:",$scope.csvData);
                             $http.post(baseUrl + 'donar/donorImport', $scope.csvData).success(function(res) {
-                                console.log(res);
+                                //console.log(res);
                                 if (res.status === false) {
                                     $scope.showimporterrormsg = true;
                                     $scope.importerrormsg = 'Records not imported';
@@ -234,7 +228,6 @@ angular.module('adminPanel').controller('donarController', [
 
     $scope.donorImport = function(ele) {
         $scope.csvFile = ele.files[0];
-        //console.log("csvFile:",$scope.csvFile);
         $scope.$apply();
     };
 

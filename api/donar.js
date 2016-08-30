@@ -189,14 +189,14 @@ router.post('/searchdonor', function(req, res) {
 
     if (req.body.type) {
         //var sql = "SELECT * from donors where donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%"  + donortype + "%'" + "AND admin_id = " + admin_id;
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
     } else if (req.body.name) {
         //var sql = "SELECT * from donors where donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%"  + donorname + "%'" + "AND admin_id = " + admin_id;
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
         //console.log("sql query:",sql);
     } else if (req.body.nomination) {
         //var sql = "SELECT * from donors where nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%"  + nominationcode + "%'" + "AND admin_id = " + admin_id;
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
     } else {
         //var sql = "SELECT * from donors";
         var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid"
@@ -215,24 +215,54 @@ router.post('/donorImport', function(req, res) {
     var csvData = req.body.csvData;
     var i = 0;
     var status = '';
+
+
     async.forEach(csvData, function(data, callback) {
+        var nominationcode = getRandomSpan();
         if (data.donorname === undefined && data.roleid === undefined && data.donortype === undefined) {
             status = false;
             callback();
         } else {
-            var query = "INSERT INTO donors (donorname,donortype,nominationcode,preftitle,roleid,admin_id,created_on,modified_on) VALUES ('" + data.donorname + "','" + data.donortype + "'," + data.nominationcode + ",'" + data.preftitle + "','" + data.roleid + "','" + req.body.id + "'," + env.timestamp() + "," + env.timestamp() + ")";
-            connection.query(query, function(err, dataL) {
-                if (!err) {
-                    status = true;
-                    i = ++i;
-                    callback();
+            donar.load({ 'nominationcode': nominationcode }, function(error1, result1) {
+                if (error1) {
+                    console.log("Error");
                 } else {
-                    console.log('error while importing csv', err);
-                    status = false;
-                    callback();
+                    if (result1 == null || result1 == '') {
+                        
+                        var con_preftitle = mysql.escape(data.preftitle);
+                        var con_donorname = mysql.escape(data.donorname);
+
+                        var query = "INSERT INTO donors (donorname,donortype,nominationcode,preftitle,roleid,admin_id,created_on,modified_on) VALUES (" + con_donorname + ",'" + data.donortype + "'," + nominationcode + "," + con_preftitle + ",'" + data.roleid + "','" + req.body.id + "'," + env.timestamp() + "," + env.timestamp() + ")";
+
+                        connection.query(query, function(err, dataL) {
+                            if (!err) {
+                                status = true;
+                                i = ++i;
+                                callback();
+                            } else {
+                                console.log('error while importing csv', err);
+                                status = false;
+                                callback();
+                            }
+                        });
+                    } else {
+                        console.log("Number Available in DB");
+                        responsedata = {
+                            status: false,
+                            record: error1,
+                            message: 'Nomination code already exists in DB'
+                        }
+                        res.jsonp(responsedata);
+                    }
                 }
             });
+
         }
+
+        function getRandomSpan() {
+            return Math.floor((Math.random() * 99999999999) + 1);
+        }
+
     }, function(error) {
         console.log('error async', error);
         if (!error) {
@@ -240,6 +270,7 @@ router.post('/donorImport', function(req, res) {
             res.jsonp({ "status": status, count: i });
         }
     });
+
 });
 
 router.get('/getallFilterdonarlist', function(req, res) {
@@ -277,15 +308,15 @@ router.get('/donarlistbyIndividual', function(req, res) {
 });
 
 router.post('/searchallinone', function(req, res) {
-    console.log("searchallinone req.body:",req.body);
+    console.log("searchallinone req.body:", req.body);
 
     //var value = req.body.value;
     // var typeofsearch = req.body.typeofsearch;
     var title = req.body.title;
     var type = req.body.type;
-    
-    var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%"  + title + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
-    console.log("sql query:",sql);
+
+    var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%" + title + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+    console.log("sql query:", sql);
     /*if (typeofsearch === 'name') {
         var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
     } else if (typeofsearch === 'title') {
@@ -297,11 +328,11 @@ router.post('/searchallinone', function(req, res) {
         if (error) {
             console.log(error);
         } else {
-             responsedata = {
-                    status: true,
-                    typeof : type,
-                    record: response
-             }
+            responsedata = {
+                status: true,
+                typeof: type,
+                record: response
+            }
             res.jsonp(responsedata);
         }
     });
