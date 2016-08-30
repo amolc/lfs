@@ -32,6 +32,7 @@
                                                 <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
+                                            <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm ,'Individual')">Reset</button>
                                             <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
                                                 <div class="text-danger" ng-message="required">
                                                     Enter the text</div>
@@ -67,12 +68,13 @@
                                 </div>
                                 <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
                                     <div class="col-md-12" style="padding-bottom:20px;">
-                                        <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Corporate')" id="corp" novalidate>
+                                        <form class="form-inline pull-right" name="searchForm1" ng-submit="search(searchForm1,searchobj,'Corporate')" id="corp" novalidate>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                            <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Corporate')">Reset</button>
+                                            <div ng-messages="searchForm1.$submitted && searchForm1.searchtext.$error">
                                                 <div class="text-danger" ng-message="required">
                                                     Enter the text</div>
                                             </div>

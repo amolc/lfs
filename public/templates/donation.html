@@ -18,7 +18,12 @@
                             <img src="img/paypal.png">
                         </div>
                         <div class="col-md-6" align="right">
-                            <a class="btn btn-primary btn-lg pay-now" href="donation.html">Pay now with Credit Card</a>
+                            <!-- <a class="btn btn-primary btn-lg pay-now" href="donation.html">Pay now with Credit Card</a> -->
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="C68PB45HQF24W">
+                                <input type="image" src="img/paypal.png" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1"></form>
                         </div>
                     </div>
                 </div>

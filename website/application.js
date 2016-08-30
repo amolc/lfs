@@ -100,12 +100,16 @@ angular.module('FrenchLfs').controller('MainController', [
     '$window',
     '$modal',
     '$log',
-    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, $window, $modal, $log) {
+    function($scope, $http, $stateParams, $location, $rootScope, $state, $timeout, store, $sce, $window, $modal, $log, $setPristine) {
         $scope.userSession = store.get('userSession') || {};
 
         $scope.init = function() {
 
         };
+
+        $scope.searchobj = {
+            title: ''
+        }
 
         $scope.currentPage = 1;
         $scope.currentPage1 = 1;
@@ -128,20 +132,6 @@ angular.module('FrenchLfs').controller('MainController', [
         $scope.flag = 1;
         $scope.donortype = 'Individual Donors';
 
-        /* $scope.getalldonarlist = function(){
-                $http.get(baseUrl + 'donar/getalldonarlist').success(function(res, req){
-                     $scope.alldonorList1 = res;
-                     var filtercategory = _.where(res,{'donortype':$scope.donortype});
-                     $scope.alldonorList = filtercategory;
-                     $scope.pageChangeHandler(filtercategory.length);
-                }).error(function(error) {
-                     console.log("Error", error);
-                });
-         };
-         $scope.getalldonarlist();*/
-
-
-
         $scope.setflag = function(flag) {
             if (flag === 1) {
                 $scope.donortype = 'Individual Donors';
@@ -149,9 +139,8 @@ angular.module('FrenchLfs').controller('MainController', [
                 $scope.donortype = 'Corporate Donors';
             }
 
-            /*var filtercategory = _.where($scope.alldonorList1,{'donortype':$scope.donortype});
-             $scope.alldonorList = filtercategory;*/
         }
+
         $scope.imageURL = imageURL;
 
         $scope.showPopover = false;
@@ -237,6 +226,20 @@ angular.module('FrenchLfs').controller('MainController', [
         }
 
         $scope.pdfURL = pdfURL;
+
+        $scope.reset = function(searchForm, flag) {
+            $state.reload();
+            if (flag == 'Individual') {
+
+
+                document.getElementById("myForm").reset();
+                $scope.getdonarlistbyIndividual();
+            } else {
+ 
+                document.getElementById("myForm").reset();
+                $scope.getdonarlistbycorporate();
+            }
+        }
 
     }
 ]);
