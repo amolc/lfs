@@ -244,7 +244,15 @@ angular.module('Lfs').controller('MainController', [
 
         }
 
-
+        $scope.reset = function(searchForm, flag) {
+            if (flag == 'Individual') {
+                $scope.getdonarlistbyIndividual();
+                $state.reload();
+            } else {
+                $scope.getdonarlistbycorporate();
+                $state.reload();
+            }
+        }
 
 
     }

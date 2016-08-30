@@ -104,12 +104,12 @@ angular.module('FrenchLfs').controller('MainController', [
         $scope.userSession = store.get('userSession') || {};
 
         $scope.init = function() {
-
+            $scope.searchobj = {
+             title: ""
+            }
         };
 
-        $scope.searchobj = {
-            title: ''
-        }
+        
 
         $scope.currentPage = 1;
         $scope.currentPage1 = 1;
@@ -157,8 +157,10 @@ angular.module('FrenchLfs').controller('MainController', [
         }
 
         $scope.getdonarlistbycorporate = function() {
+            console.log("calling getdonarlistbycorporate");
             $http.get(baseUrl + 'donar/donarlistbycorporate').success(function(res, req) {
                 $scope.corporatelist = res;
+                console.log(res);
             }).error(function(error) {
                 console.log("Error", error);
             });
@@ -170,6 +172,7 @@ angular.module('FrenchLfs').controller('MainController', [
         };
 
         $scope.getdonarlistbyIndividual = function() {
+            console.log("calling getdonarlistbyIndividual");
             $http.get(baseUrl + 'donar/donarlistbyIndividual').success(function(res, req) {
                 $scope.Individual = res;
             }).error(function(error) {
@@ -228,16 +231,12 @@ angular.module('FrenchLfs').controller('MainController', [
         $scope.pdfURL = pdfURL;
 
         $scope.reset = function(searchForm, flag) {
-            $state.reload();
             if (flag == 'Individual') {
-
-
-                document.getElementById("myForm").reset();
                 $scope.getdonarlistbyIndividual();
+                $state.reload();
             } else {
- 
-                document.getElementById("myForm").reset();
                 $scope.getdonarlistbycorporate();
+                $state.reload();
             }
         }
 
