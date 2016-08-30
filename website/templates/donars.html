@@ -16,17 +16,29 @@
                         <div class="tabbable-line">
                             <ul class="nav nav-tabs ">
                                 <li class="active">
-                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1)">
+                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1);getdonarlistbyIndividual();">
               Les donateurs individuels </a>
                                 </li>
                                 <li>
-                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2)">
+                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2);getdonarlistbycorporate();">
               Les donateurs corporatifs</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
                                 <div class="row tab-pane active" id="tab_default_1" ng-if="donortype == 'Individual Donors'">
-                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
+                                    <div class="col-md-12" style="padding-bottom:20px;">
+                                        <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Individual')" novalidate>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
+                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                                <div class="text-danger" ng-message="required">
+                                                    Enter the text</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
                                         <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
@@ -34,10 +46,8 @@
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <h3 ng-if="donor.donorname.length < '10'">{{donor.donorname | limitTo: 10}}</h3>
-                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 10}}..</h3>
-                                                <p ng-if="donor.preftitle.length < '40'">{{donor.preftitle | limitTo: 40}}</p>
-                                                <p ng-if="donor.preftitle.length > '40'">{{donor.preftitle | limitTo: 40}}..</p>
+                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</h3>
+                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
                                         <div class="popover" ng-show="showPopover && id == $index">
@@ -48,8 +58,7 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
-                                                    <h3>{{popover.title}}</h3>
-                                                    <p>{{popover.message}}</p>
+                                                    <h3>{{popover.message}}</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +66,19 @@
                                     <!--ng-repeat end-->
                                 </div>
                                 <div class="row tab-pane active" id="tab_default_2" ng-if="donortype == 'Corporate Donors'">
-                                    <div class="col-md-4 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
+                                    <div class="col-md-12" style="padding-bottom:20px;">
+                                        <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Corporate')" id="corp" novalidate>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
+                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                                <div class="text-danger" ng-message="required">
+                                                    Enter the text</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
                                         <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
@@ -65,10 +86,8 @@
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
-                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3>
-                                                <p ng-if="donor.preftitle.length < '50'">{{donor.preftitle | limitTo: 50}}</p>
-                                                <p ng-if="donor.preftitle.length > '50'">{{donor.preftitle | limitTo: 50}}..</p>
+                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</b></h3>
+                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
                                         <div class="popover" ng-show="showPopover && id == $index">
@@ -79,8 +98,7 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'platinum.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
-                                                    <h3>{{popover.title}}</h3>
-                                                    <p>{{popover.message}}</p>
+                                                    <h3>{{popover.message}}</h3>
                                                 </div>
                                             </div>
                                         </div>

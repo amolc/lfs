@@ -109,8 +109,8 @@ angular.module('FrenchLfs').controller('MainController', [
 
         $scope.currentPage = 1;
         $scope.currentPage1 = 1;
-        $scope.pageSize = 6;
-        $scope.pageSize1 = 6;
+        $scope.pageSize = 40;
+        $scope.pageSize1 = 40;
 
         $scope.currState = $state;
         $scope.$watch('currState.current.name', function(newValue, oldValue) {
@@ -210,6 +210,31 @@ angular.module('FrenchLfs').controller('MainController', [
             $timeout.cancel(timer);
             $scope.showPopover = false;
         };
+
+        $scope.search = function(searchForm, searchobj, type) {
+            if (searchForm.$valid) {
+                searchobj.type = type;
+                $http.post(baseUrl + 'donar/searchallinone', searchobj).success(function(res, req) {
+                    if (res.status == true) {
+                        if (res.typeof == 'Individual') {
+                            $scope.Individual = res.record;
+
+                        } else if (res.typeof == 'Corporate') {
+                            $scope.corporatelist = res.record;
+                        }
+                    } else {
+                        if (res.typeof == 'Individual') {
+                            $scope.getdonarlistbyIndividual();
+                        } else if (res.typeof == 'Corporate') {
+                            $scope.getdonarlistbycorporate();
+                        }
+                    }
+                }).error(function(error) {
+                    console.log("Error", error);
+                });
+            }
+
+        }
 
     }
 ]);

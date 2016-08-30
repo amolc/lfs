@@ -766,8 +766,9 @@ input {
     top: 0px;
     display: block;
     padding: 0 20px;
-    width: 370px;
-    max-width: 400px;
+    width: 500px;
+    max-width: 600px;
+    height: 120px;
 }
 .popover .well {
     box-shadow: none;
@@ -811,4 +812,14 @@ input {
     text-align:center;
     position:absolute;
     bottom:0;
+}
+
+.btn-web {
+    background: #2B72B6;
+    color: #ffffff;
+}
+
+.btn-web.focus, .btn-web:focus, .btn-web:hover {
+    background: #3884cd;
+    color: #fff;
 }
