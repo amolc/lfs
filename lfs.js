@@ -44,17 +44,11 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 
-app.use(express.static(path.join(__dirname, 'public')));
-/*app.use(express.static(path.join(__dirname, 'mobile')));*/
-app.use(express.static(path.join(__dirname, 'admin')));
-/*catch 404 and forward to error handler*/
-/*app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-*/
 
+
+app.use(express.static(path.join(__dirname, '/public/english')));
+// app.use('/en', express.static(__dirname + '/public/english'));
+app.use(express.static(path.join(__dirname, 'admin')));
 
 /**
  * development error handler
@@ -84,12 +78,14 @@ if (app.get('env') === 'development') {
   });
 });*/
 
-app.use('/', express.static(__dirname + '/public'));
-app.use('/api', express.static(__dirname + '/api'));
+
+app.use('/fr', express.static(__dirname + '/public/french'));
 app.use('/admin', express.static(__dirname + '/admin'));
+app.use('/en', express.static(__dirname + '/public/english'));
+app.use('/api', express.static(__dirname + '/api'));
 app.use('/assets/images', express.static(__dirname + '/assets/images'));
 app.use('/assets/csv', express.static(__dirname + '/assets/csv'));
-app.use('/website', express.static(__dirname + '/website'));
+
 app.use('/assets/pdf', express.static(__dirname + '/assets/pdf'));
 
 var adminlogin = require('./api/adminlogin.js');
