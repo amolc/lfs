@@ -192,5 +192,37 @@ angular.module('adminPanel').controller('MainController', [
       }
     };
 
+    $scope.donarstype = [
+      {
+        id: "1",
+        type: "Platinum"
+      },
+      {
+        id: "2",
+        type: "Gold"
+      },
+      {
+        id: "3",
+        type: "Silver"
+      },
+      {
+        id: "4",
+        type: "Bronze"
+      },
+      {
+        id: "5",
+        type: "Benefactor"
+      }
+    ];
+
+    $scope.donarcaterory = [
+      {
+        cat: "Individual Donors"
+      },
+      {
+        cat: "Corporate Donors"
+      }
+    ];
+
   }
 ]);

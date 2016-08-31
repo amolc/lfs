@@ -219,7 +219,7 @@ router.post('/donorImport', function(req, res) {
 
     async.forEach(csvData, function(data, callback) {
         var nominationcode = getRandomSpan();
-        if (data.donorname === undefined && data.roleid === undefined && data.donortype === undefined) {
+        if (data.donorname === undefined && data.donar_type_id === undefined && data.donar_category === undefined) {
             status = false;
             callback();
         } else {
@@ -232,7 +232,7 @@ router.post('/donorImport', function(req, res) {
                         var con_preftitle = mysql.escape(data.preftitle);
                         var con_donorname = mysql.escape(data.donorname);
 
-                        var query = "INSERT INTO donors (donorname,donortype,nominationcode,preftitle,roleid,admin_id,created_on,modified_on) VALUES (" + con_donorname + ",'" + data.donortype + "'," + nominationcode + "," + con_preftitle + ",'" + data.roleid + "','" + req.body.id + "'," + env.timestamp() + "," + env.timestamp() + ")";
+                        var query = "INSERT INTO donors (donorname,donortype,nominationcode,preftitle,roleid,admin_id,created_on,modified_on) VALUES (" + con_donorname + ",'" + data.donar_category + "'," + nominationcode + "," + con_preftitle + ",'" + data.donar_type_id + "','" + req.body.id + "'," + env.timestamp() + "," + env.timestamp() + ")";
 
                         connection.query(query, function(err, dataL) {
                             if (!err) {
