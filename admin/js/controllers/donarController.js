@@ -18,7 +18,7 @@ angular.module('adminPanel').controller('donarController', [
 
 
         $scope.currentPage = 1;
-        $scope.pageSize = 5;
+        $scope.pageSize = 40;
 
         $scope.getdonarroll = function(){
            $http.get(baseUrl + 'donar/getdonarsroll').success(function(res, req){

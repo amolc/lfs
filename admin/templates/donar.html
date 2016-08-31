@@ -10,14 +10,14 @@
                         <option value="" disabled selected hidden>Select Search By</option>
                         <option value="name">Name</option>
                         <option value="type">Category</option>
-                        <option value="nomination code">Nomination code</option>
+                        <option value="nomination code">Reference Id</option>
                 </select>
               </div>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Sample textbox" ng-if="search.typeofsearch != 'name' && search.typeofsearch != 'type' && search.typeofsearch != 'nomination code'">
                 <input type="text" class="form-control" placeholder="Name" name="nameobf" ng-if="search.typeofsearch == 'name'" ng-model="search.name">
                 <input type="text" class="form-control" placeholder="Category" name="donortype" ng-if="search.typeofsearch == 'type'" ng-model="search.type">
-                <input type="text" class="form-control" placeholder="Nomination code" name="nomination" ng-if="search.typeofsearch == 'nomination code'" ng-model="search.nomination">
+                <input type="text" class="form-control" placeholder="Reference Id" name="nomination" ng-if="search.typeofsearch == 'nomination code'" ng-model="search.nomination">
               </div>
               <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
                 <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
@@ -34,7 +34,7 @@
                 </div>
                 <div ng-messages="searchForm.$submitted && searchForm.nomination.$error" role="alert">
                         <div class="text-danger" style="text-align: center;" ng-message="required">
-                            Enter the nomination code </div>
+                            Enter the Reference id </div>
                 </div>
                 <!-- {{searchForm}} -->
           </form>
@@ -70,22 +70,22 @@
                 </div> -->
                 <div class="form-group">
                   <select class="form-control" name="donarrolaa" ng-model="donar.roleid" ng-options="roll.roleid as roll.role_name for roll in donarrolls" required>
-                      <option value="" disabled selected hidden>Select Donor Roll</option>
+                      <option value="" disabled selected hidden>Select Donor Type</option>
                   </select>
                   <div ng-messages="AddDonarForm.$submitted && AddDonarForm.donarrolaa.$error" role="alert">
                       <div class="text-danger" style="text-align: center;" ng-message="required">
-                          Select Donor Roll</div>
+                          Select Donor Type</div>
                   </div>
                 </div>
                 <div class="form-group">
                   <select class="form-control" name="donortype" ng-model="donar.donortype" required>
-                      <option value="" disabled selected hidden>Select Donor Type</option>
+                      <option value="" disabled selected hidden>Select Donor Category</option>
                       <option>Individual Donors</option>
                       <option>Corporate Donors</option>
                   </select>
                   <div class="" ng-messages="AddDonarForm.$submitted && AddDonarForm.donortype.$error" role="alert">
                       <div class="text-danger" style="text-align: center;" ng-message="required">
-                          Select Donor Type</div>
+                          Select Donor Category</div>
                   </div>
                 </div>
                 <div class="form-group">
