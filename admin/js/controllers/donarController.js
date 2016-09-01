@@ -156,16 +156,21 @@ angular.module('adminPanel').controller('donarController', [
                     console.log("Error", error);
             });
         };
+        
+        $scope.search = {
+            id: $scope.adminsession.id,
+            text :''
+        }
 
         $scope.searchbyoption = function(searchForm,searchobj){
-            if(searchForm.$valid){
-                searchobj.id = $scope.adminsession.id;
-                $http.post(baseUrl + 'donar/searchdonor' , searchobj).success(function(res, req){
+           /* if(searchForm.$valid){*/
+                $scope.search.id = $scope.adminsession.id;
+                $http.post(baseUrl + 'donar/searchdonor' , $scope.search).success(function(res, req){
                         $scope.donarlist = res;
                     }).error(function(error) {
                         console.log("Error", error);
                 });
-            }
+            /*}*/
         }
 
         $scope.uploadDonarCsv = function() {

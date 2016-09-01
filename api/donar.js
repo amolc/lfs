@@ -182,25 +182,53 @@ router.get('/getalldonarlist', function(req, res) {
 });
 
 router.post('/searchdonor', function(req, res) {
-    var admin_id = req.body.id;
-    var donorname = req.body.name;
-    var donortype = req.body.type;
-    var nominationcode = req.body.nomination;
 
-    if (req.body.type) {
-        //var sql = "SELECT * from donors where donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
-    } else if (req.body.name) {
-        //var sql = "SELECT * from donors where donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
-        //console.log("sql query:",sql);
-    } else if (req.body.nomination) {
-        //var sql = "SELECT * from donors where nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
-    } else {
-        //var sql = "SELECT * from donors";
-        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid"
+    var searchfor = req.body.typeofsearch;
+    var searchtext = req.body.text;
+    var admin_id = req.body.id;
+
+    if(searchfor == 'nomination code'){
+        if(searchtext){
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%" + searchtext + "%'" + "AND admin_id = " + admin_id;
+        }else{
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid ORDER BY t1.donorid DESC";
+        }
+    }else if(searchfor == 'name'){
+        
+        if(searchtext){
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%" + searchtext + "%'" + "AND admin_id = " + admin_id;
+        }else{
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid ORDER BY t1.donorid DESC";
+        }
+
+    }else if(searchfor == 'type'){
+        if(searchtext){
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%" + searchtext + "%'" + "AND admin_id = " + admin_id;
+        }else{
+            var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid ORDER BY t1.donorid DESC";
+        }
+    }else{
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid ORDER BY t1.donorid DESC";
     }
+    // var admin_id = req.body.id;
+    // var donorname = req.body.name;
+    // var donortype = req.body.type;
+    // var nominationcode = req.body.nomination;
+
+    // if (req.body.type) {
+    //     //var sql = "SELECT * from donors where donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
+    //     var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%" + donortype + "%'" + "AND admin_id = " + admin_id;
+    // } else if (req.body.name) {
+    //     //var sql = "SELECT * from donors where donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
+    //     var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%" + donorname + "%'" + "AND admin_id = " + admin_id;
+    //     //console.log("sql query:",sql);
+    // } else if (req.body.nomination) {
+    //     //var sql = "SELECT * from donors where nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
+    //     var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.nominationcode LIKE '%" + nominationcode + "%'" + "AND admin_id = " + admin_id;
+    // } else {
+    //     //var sql = "SELECT * from donors";
+    //     var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid"
+    // }
 
     connection.query(sql, function(error, response) {
         if (error) {
