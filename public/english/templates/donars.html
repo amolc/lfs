@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
                                         <!-- <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;"> -->
-                                         <div class="well" style="padding-bottom: 40px;">
+                                         <div class="well">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
@@ -111,7 +111,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
                                         <!-- <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;"> -->
-                                        <div class="well" style="padding-bottom: 40px;">
+                                        <div class="well">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">

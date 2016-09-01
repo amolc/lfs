@@ -535,13 +535,15 @@ footer .navbar-default .navbar-nav>li>a{
   padding-bottom: 0;
 }
 .well{
-	padding-left: 100px;
+    padding-left: 100px;
     margin-bottom: 20px;
     background-color: #ffffff;
     padding-bottom: 10px;
     border-radius: 0px;
+    min-height: 90px;
     box-shadow: 0 2px 1px rgba(172, 172, 172, 0.45);
     border: 1px solid #f0f0f0;
+    cursor: initial;
 }
 .well img{
     position: absolute;
