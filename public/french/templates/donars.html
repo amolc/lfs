@@ -32,12 +32,6 @@
                                                 <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <!-- <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Individual')">Reset</button> -->
-                                            
-                                            <!-- <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
-                                                <div class="text-danger" ng-message="required">
-                                                    Enter the text</div>
-                                            </div> -->
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
@@ -62,11 +56,6 @@
                                                 <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <!-- <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Corporate')">Reset</button>
-                                            <div ng-messages="searchForm1.$submitted && searchForm1.searchtext.$error">
-                                                <div class="text-danger" ng-message="required">
-                                                    Enter the text</div>
-                                            </div> -->
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
