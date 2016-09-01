@@ -63,10 +63,7 @@
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <!--  <h3 ng-if="donor.donorname.length < '10'">{{donor.donorname | limitTo: 10}}</h3>
-                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 10}}..</h3> -->
-                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</h3>
-                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
+                                                <h3>{{donor.preftitle}}</h3>
                                             </div>
                                         </div>
                                         <!-- <div class="popover" ng-show="showPopover && id == $index">
@@ -121,10 +118,7 @@
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
                                             <div class="span3">
-                                                <!--  <h3 ng-if="donor.donorname.length < '15'">{{donor.donorname | limitTo: 15}}</h3>
-                                                <h3 ng-if="donor.donorname.length > '15'">{{donor.donorname | limitTo: 15}}..</h3> -->
-                                                <h3 ng-if="donor.preftitle.length < '30'">{{donor.preftitle | limitTo: 30}}</b></h3>
-                                                <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
+                                                <h3>{{donor.preftitle}}</h3>
                                             </div>
                                         </div>
                                         <!-- <div class="popover" ng-show="showPopover && id == $index">
