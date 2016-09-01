@@ -112,6 +112,9 @@ angular.module('Lfs').controller('MainController', [
 
         };
 
+        $scope.engURL = engURL ;
+        $scope.frURL = frURL;
+            
         $scope.currentPage = 1;
         $scope.currentPage1 = 1;
         $scope.pageSize = 40;
@@ -216,11 +219,16 @@ angular.module('Lfs').controller('MainController', [
             $scope.showPopover = false;
         };
 
+        $scope.searchobj = {
+            title: ''
+        };
+
         $scope.search = function(searchForm, searchobj, type) {
-            //console.log("searchobj:",searchobj);
-            if (searchForm.$valid) {
-                searchobj.type = type;
-                $http.post(baseUrl + 'donar/searchallinone', searchobj).success(function(res, req) {
+            
+            
+            /*if (searchForm.$valid) {*/
+                $scope.searchobj.type = type;
+                $http.post(baseUrl + 'donar/searchallinone', $scope.searchobj).success(function(res, req) {
                     if (res.status == true) {
                         if (res.typeof == 'Individual') {
                             $scope.Individual = res.record;
@@ -240,7 +248,7 @@ angular.module('Lfs').controller('MainController', [
                 }).error(function(error) {
                     console.log("Error", error);
                 });
-            }
+            /*}*/
 
         }
 

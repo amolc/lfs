@@ -37,15 +37,15 @@
                                                 </select>
                                             </div> -->
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" >
                                             </div>
 
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Individual')">Reset</button>
-                                            <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                           <!--  <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Individual')">Reset</button> -->
+                                            <!-- <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
                                                 <div class="text-danger" ng-message="required">
                                                                 Enter the text</div>
-                                            </div>
+                                            </div> -->
                                             <!-- <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
                                                 <div class="text-danger" style="text-align: left;" ng-message="required">
                                                     Select Search Option</div>
@@ -55,7 +55,8 @@
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
-                                        <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;">
+                                        <!-- <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;"> -->
+                                         <div class="well" style="padding-bottom: 40px;">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
@@ -68,7 +69,7 @@
                                                 <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
-                                        <div class="popover" ng-show="showPopover && id == $index">
+                                        <!-- <div class="popover" ng-show="showPopover && id == $index">
                                             <div class="well">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'gold.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'silver.png'">
@@ -77,10 +78,9 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
                                                     <h3>{{popover.message}}</h3>
-                                                   <!--  <p>{{popover.message}}</p> -->
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <!--ng-repeat end-->
                                 </div>
@@ -96,14 +96,14 @@
                                                 </select>
                                             </div> -->
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
+                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title">
                                             </div>
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
-                                            <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Corporate')">Reset</button>
-                                             <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
+                                            <!-- <button type="submit" class="btn btn-web" style="    padding: 6px 25px;" ng-click="reset(searchForm1 ,'Corporate')">Reset</button> -->
+                                            <!--  <div ng-messages="searchForm.$submitted && searchForm.searchtext.$error">
                                                 <div class="text-danger" ng-message="required">
                                                 Enter the text</div>
-                                            </div>
+                                            </div> -->
                                            <!--  <div ng-messages="searchForm.$submitted && searchForm.optiontype.$error" role="alert">
                                                 <div class="text-danger" style="text-align: left;" ng-message="required">
                                                     Select Search Option</div>
@@ -113,7 +113,8 @@
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
-                                        <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;">
+                                        <!-- <div class="well" ng-mouseenter="showIt(donor,$index);" ng-mouseleave="hideIt();" style="padding-bottom: 40px;"> -->
+                                        <div class="well" style="padding-bottom: 40px;">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
@@ -126,7 +127,7 @@
                                                 <h3 ng-if="donor.preftitle.length > '30'">{{donor.preftitle | limitTo: 30}}..</h3>
                                             </div>
                                         </div>
-                                        <div class="popover" ng-show="showPopover && id == $index">
+                                        <!-- <div class="popover" ng-show="showPopover && id == $index">
                                             <div class="well">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'gold.png'">
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'silver.png'">
@@ -135,10 +136,9 @@
                                                 <img ng-src="{{imageURL}}/{{popover.imageurl}}" ng-if="popover.imageurl == 'benefactor.png'">
                                                 <div class="span3">
                                                     <h3>{{popover.message}}</h3>
-                                                   <!--  <p>{{popover.message}}</p> -->
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <!-- ng-repeat end-->
                                 </div>

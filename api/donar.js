@@ -228,7 +228,7 @@ router.post('/donorImport', function(req, res) {
                     console.log("Error");
                 } else {
                     if (result1 == null || result1 == '') {
-                        
+
                         var con_preftitle = mysql.escape(data.preftitle);
                         var con_donorname = mysql.escape(data.donorname);
 
@@ -308,14 +308,19 @@ router.get('/donarlistbyIndividual', function(req, res) {
 });
 
 router.post('/searchallinone', function(req, res) {
-    //console.log("searchallinone req.body:", req.body);
 
     //var value = req.body.value;
     // var typeofsearch = req.body.typeofsearch;
     var title = req.body.title;
     var type = req.body.type;
 
-    var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%" + title + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+
+    if (title == '' || title == 'undefined ') {
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donortype LIKE '%" + type + "%' ORDER BY t1.donorid DESC";
+    } else {
+        var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.preftitle LIKE '%" + title + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
+    }
+
     //console.log("sql query:", sql);
     /*if (typeofsearch === 'name') {
         var sql = "SELECT t1.*, t2.* FROM donors t1, donor_roles t2 WHERE t1.roleid = t2.roleid && t1.donorname LIKE '%"  + value + "%'" + " AND t1.donortype LIKE '%" + type + "%'";
@@ -328,21 +333,21 @@ router.post('/searchallinone', function(req, res) {
         if (error) {
             console.log(error);
         } else {
-            
-            if(response == '' || response == null){
+
+            if (response == '' || response == null) {
                 responsedata = {
                     status: false,
                     typeof: type,
                     record: response
                 }
-            }else{
+            } else {
                 responsedata = {
                     status: true,
                     typeof: type,
                     record: response
                 }
             }
-           
+
             res.jsonp(responsedata);
         }
     });
