@@ -262,6 +262,8 @@ angular.module('Lfs').controller('MainController', [
             }
         }
 
+        $scope.downloadUrl = downloadUrl;
+
 
     }
 ]);

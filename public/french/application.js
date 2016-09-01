@@ -232,6 +232,7 @@ angular.module('FrenchLfs').controller('MainController', [
         }
 
         $scope.pdfURL = pdfURL;
+        $scope.downloadUrl = downloadUrl;
 
         $scope.reset = function(searchForm, flag) {
             if (flag == 'Individual') {
