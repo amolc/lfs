@@ -158,10 +158,8 @@ angular.module('FrenchLfs').controller('MainController', [
         }
 
         $scope.getdonarlistbycorporate = function() {
-            console.log("calling getdonarlistbycorporate");
             $http.get(baseUrl + 'donar/donarlistbycorporate').success(function(res, req) {
                 $scope.corporatelist = res;
-                console.log(res);
             }).error(function(error) {
                 console.log("Error", error);
             });
@@ -169,11 +167,10 @@ angular.module('FrenchLfs').controller('MainController', [
         $scope.getdonarlistbycorporate();
 
         $scope.pageChangeHandler = function(num) {
-            console.log('meals page changed to ' + num);
+            //console.log('meals page changed to ' + num);
         };
 
         $scope.getdonarlistbyIndividual = function() {
-            console.log("calling getdonarlistbyIndividual");
             $http.get(baseUrl + 'donar/donarlistbyIndividual').success(function(res, req) {
                 $scope.Individual = res;
             }).error(function(error) {
@@ -183,8 +180,8 @@ angular.module('FrenchLfs').controller('MainController', [
         $scope.getdonarlistbyIndividual();
 
         $scope.pageChangeHandler1 = function(num) {
-            console.log("pageChangeHandler1");
-            console.log('meals page changed to ' + num);
+            //console.log("pageChangeHandler1");
+            //console.log('meals page changed to ' + num);
         };
 
         // create the timer variable

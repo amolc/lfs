@@ -124,7 +124,7 @@ angular.module('adminPanel').controller('MainController', [
               'username': res.record[0].username
             }; 
             store.set('adminsession', adminsession);
-            console.log("adminsession:", adminsession);
+            
             $scope.init();
             $state.go('mainview.donar');
           } else if (res.status === false) {
@@ -184,8 +184,6 @@ angular.module('adminPanel').controller('MainController', [
               //$location.path('login');
             }, 2000);
           }
-          console.log("res:",res);
-      
         }).error(function() {
           console.log("problem In signup");
         });
