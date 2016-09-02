@@ -21,6 +21,31 @@ outline: 0;
 .jumbotron .container{
     position: relative;
 }
+.wrap {
+    display: table;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 1px rgba(172, 172, 172, 0.45);
+    border: 1px solid #f0f0f0;
+    background: #fff;
+}
+.wrap p {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 25px;
+    font-family: 'osp-dindin';
+    color: #4A4A4A;
+    padding-left: 90px;
+    line-height: 1;
+    padding-right: 30px;
+}
+.wrap img{
+    position: absolute;
+    left: 30px;
+    top: 25px;
+}
 .navbar-inverse {
     background-color: #292929;
     border-color: #292929;

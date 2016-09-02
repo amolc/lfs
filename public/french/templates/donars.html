@@ -7,7 +7,7 @@
     </div>
     <section class="donors">
         <div class="container">
-            <h2>NOTRE estimais DONATEURS</h2>
+            <h2 style="text-transform: uppercase;">Notre Vénérable donateurs</h2>
         </div>
         <div class="container">
             <div class="row">
@@ -35,15 +35,13 @@
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
-                                        <div class="well">
+                                        <div class="wrap">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
-                                            <div class="span3">
-                                                <h3>{{donor.preftitle}}</h3>
-                                            </div>
+                                                <p>{{donor.preftitle}}</p>
                                         </div>
                                     </div>
                                     <!--ng-repeat end-->
@@ -57,19 +55,19 @@
                                             <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
                                         </form>
                                     </div>
-                                    <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
-                                        <div class="well">
+                                
+                                        <div class="col-md-6 col-sm-6" dir-paginate="donor in corporatelist | itemsPerPage: pageSize1 track by $index" pagination-id="Corporate_D" current-page="currentPage1">
+                                          <div class="wrap">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'gold.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'silver.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'bronze.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'platinum.png'">
                                             <img ng-src="{{imageURL}}/{{donor.imageurl}}" ng-if="donor.imageurl == 'benefactor.png'">
-                                            <div class="span3">
-                                                <h3>{{donor.preftitle}}</h3>
-                                            </div>
+                                            <p>{{donor.preftitle}}</p>
+                                          </div>
                                         </div>
-                                    </div>
                                     <!-- ng-repeat end-->
+                                    
                                 </div>
                             </div>
                         </div>
@@ -77,6 +75,7 @@
                 </div>
             </div>
         </div>
+        
     </section>
 </div>
 <div class="container text-center" ng-if="donortype == 'Corporate Donors'">
