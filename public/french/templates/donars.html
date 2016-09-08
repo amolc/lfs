@@ -7,7 +7,7 @@
     </div>
     <section class="donors">
         <div class="container">
-            <h2 style="text-transform: uppercase;">Notre Vénérable donateurs</h2>
+            <h2 style="text-transform: uppercase;">Nos Bienfaiteurs</h2>
         </div>
         <div class="container">
             <div class="row">
@@ -16,12 +16,10 @@
                         <div class="tabbable-line">
                             <ul class="nav nav-tabs ">
                                 <li class="active">
-                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1);getdonarlistbyIndividual();">
-              Les donateurs individuels </a>
+                                    <a href="donars#tab_default_1" data-toggle="tab" ng-click="setflag(1);getdonarlistbyIndividual();">Privés </a>
                                 </li>
                                 <li>
-                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2);getdonarlistbycorporate();">
-              Les donateurs corporatifs</a>
+                                    <a href="donars#tab_default_2" data-toggle="tab" ng-click="setflag(2);getdonarlistbycorporate();">Entreprises</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -29,9 +27,9 @@
                                     <div class="col-md-12" style="padding-bottom:20px;">
                                         <form class="form-inline pull-right" name="searchForm" ng-submit="search(searchForm,searchobj,'Individual')" id="ind" novalidate>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Search by name" name="searchtext" ng-model="searchobj.title" required>
+                                                <input type="text" class="form-control" placeholder="rechercher par nom" name="searchtext" ng-model="searchobj.title" required>
                                             </div>
-                                            <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>Search</button>
+                                            <button type="submit" class="btn btn-web"><i class="glyphicon glyphicon-search" style="margin-right: 5px;"></i>rechercher</button>
                                         </form>
                                     </div>
                                     <div class="col-md-6 col-sm-6" dir-paginate="donor in Individual | itemsPerPage: pageSize track by $index" pagination-id="Individual_D" current-page="currentPage">
