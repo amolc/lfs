@@ -34,12 +34,13 @@ outline: 0;
 .wrap p {
     display: table-cell;
     vertical-align: middle;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'osp-dindin';
     color: #4A4A4A;
     padding-left: 90px;
-    line-height: 1;
+    /* line-height: 1.3; */
     padding-right: 30px;
+    font-family: 'Oswald', sans-serif;
 }
 .wrap img{
     position: absolute;
