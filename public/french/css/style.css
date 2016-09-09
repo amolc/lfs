@@ -47,6 +47,11 @@ outline: 0;
     top: 25px;
     width: 70px;
 }
+
+.programs .second h2 {
+    color: #fff;
+    margin-top: 0px;
+}
 .navbar-inverse {
     background-color: #292929;
     border-color: #292929;
@@ -239,11 +244,13 @@ outline: 0;
 }
 .programs .first h2{
 	color: #fff;
+    margin-top: 0;
 }
 .programs .first .col-md-4 h2{
 	color: #fff;
     border-right: 1px solid;
-    padding: 15px 0 15px 25px;
+    padding: 15px 0px 5px 25px;
+    margin: 0px;
 }
 .programs .second h2{
 	color: #fff;
@@ -260,7 +267,7 @@ outline: 0;
 }
 .programs hr{
 	border-top: 1px solid #498ED1;
-	margin: 50px 0;
+	margin: 10px 0;
 }
 .sub-hover li {
     float: left;

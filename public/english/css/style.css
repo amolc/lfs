@@ -238,11 +238,13 @@ outline: 0;
 }
 .programs .first h2{
 	color: #fff;
+    margin-top: 0;
 }
 .programs .first .col-md-4 h2{
 	color: #fff;
     border-right: 1px solid;
-    padding: 15px 0 15px 25px;
+    padding: 15px 0px 5px 25px;
+    margin: 0px;
 }
 .programs .second h2{
 	color: #fff;
@@ -251,14 +253,19 @@ outline: 0;
 	color: #FFB844;
 	font-size: 42px;
     border-right: 1px solid #71B9FF;
-    padding: 0px 0px 5px 25px;;
+    padding: 5px 0 5px 25px;
+    margin: 0px
 }
 .programs .second .row{
 	margin-bottom: 35px;
 }
+.programs .second h2 {
+    color: #fff;
+    margin-top: 0px;
+}
 .programs hr{
 	border-top: 1px solid #498ED1;
-	margin: 50px 0;
+	margin: 10px 0;
 }
 .sub-hover li {
     float: left;
