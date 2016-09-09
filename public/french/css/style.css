@@ -251,10 +251,11 @@ outline: 0;
 	color: #FFB844;
 	font-size: 42px;
     border-right: 1px solid #71B9FF;
-    padding: 5px 0 5px 25px;;
+    padding: 5px 0 5px 25px;
+    margin: 0px;
 }
 .programs .second .row{
-	margin-bottom: 35px;
+	margin-bottom: 20px;
 }
 .programs hr{
 	border-top: 1px solid #498ED1;
