@@ -23,7 +23,7 @@ outline: 0;
 }
 .wrap {
     display: table;
-    height: 100px;
+    height: 120px;
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -36,7 +36,7 @@ outline: 0;
     vertical-align: middle;
     font-size: 20px;
     color: #4A4A4A;
-    padding-left: 90px;
+    padding-left: 100px;
     padding-right: 30px;
     font-family: 'Oswald', sans-serif;
 }
@@ -44,7 +44,7 @@ outline: 0;
     position: absolute;
     left: 30px;
     top: 25px;
-    width: 70px;
+    width: 80px;
 }
 .navbar-inverse {
     background-color: #292929;
