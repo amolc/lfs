@@ -194,6 +194,17 @@ Pierre de Coubertin
 
        });
 
+       $( "#science" ).mouseleave(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
+
        $( "#community" ).mouseover(function() {
 
           $("#science_hover").hide();
@@ -204,10 +215,31 @@ Pierre de Coubertin
 
 
        });
+
+       $( "#community" ).mouseleave(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
        $( "#art").mouseover(function() {
 
           $("#science_hover").hide();
           $("#art_hover").show();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
+       $( "#art").mouseleave(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
           $("#lit_hover").hide();
           $("#sport_hover").hide();
           $("#community_hover").hide();
@@ -224,12 +256,33 @@ Pierre de Coubertin
 
 
        });
+
+        $( "#lit" ).mouseleave(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+
+
+       });
        $( "#sport" ).mouseover(function() {
 
           $("#science_hover").hide();
           $("#art_hover").hide();
           $("#lit_hover").hide();
           $("#sport_hover").show();
+          $("#community_hover").hide();
+
+
+       });
+       $( "#sport" ).mouseleave(function() {
+
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
           $("#community_hover").hide();
 
 

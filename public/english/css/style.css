@@ -696,6 +696,9 @@ clear: both;
   background: #EEEEEE;
 }
 
+.tabs-focus .myactive {
+    color: red !important;
+}
 .tabs-focus .tab-link:focus:after,
 .tabs-hover .tab-link:hover:after,
 #tabC:target ~ a:nth-of-type(3):after,
@@ -713,6 +716,19 @@ clear: both;
     top: -9px;
     left: 80px;
     background: url('../img/down.png');
+}
+.myactive{
+       position: absolute;
+    content: "";
+    margin: 0;
+    width: 32px;
+    height: 33px;
+    display: block;
+    top: -9px;
+    left: 80px;
+    z-index: 999;
+    background: url('../img/down.png'); 
+    background-repeat: no-repeat;
 }
 @media (min-width: 1200px){
 	.container {

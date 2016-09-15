@@ -196,56 +196,94 @@ Albert Camus</h4>
           $("#sport_hover").hide();
           $("#community_hover").hide();
        
-       $( "#science" ).mouseover(function() {
-
+       $( "#science" ).mouseenter(function() {
           $("#science_hover").show();
           $("#art_hover").hide();
           $("#lit_hover").hide();
           $("#sport_hover").hide();
           $("#community_hover").hide();
+          setTimeout(science,3000);
+        });
 
-
+       $( "#science" ).mouseleave(function() {
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+          setTimeout(science, 3000);
        });
 
-       $( "#community" ).mouseover(function() {
-
+       $( "#community" ).mouseenter(function() {
           $("#science_hover").hide();
           $("#art_hover").hide();
           $("#lit_hover").hide();
           $("#sport_hover").hide();
           $("#community_hover").show();
-
-
+           $(this).fadeTo('slow', 1);
        });
-       $( "#art").mouseover(function() {
 
+       $( "#community" ).mouseleave(function() {
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+           $(this).fadeTo('slow', 1);
+       });
+
+       $( "#art").mouseenter(function() {
           $("#science_hover").hide();
           $("#art_hover").show();
           $("#lit_hover").hide();
           $("#sport_hover").hide();
           $("#community_hover").hide();
-
-
+           $(this).fadeTo('slow', 1);
        });
-       $( "#lit" ).mouseover(function() {
 
+        $( "#art").mouseleave(function() {
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+           $(this).fadeTo('slow', 1);
+       });
+
+       $( "#lit" ).mouseenter(function() {
           $("#science_hover").hide();
           $("#art_hover").hide();
           $("#lit_hover").show();
           $("#sport_hover").hide();
           $("#community_hover").hide();
-
-
+           $(this).fadeTo('slow', 1);
        });
-       $( "#sport" ).mouseover(function() {
 
+        $( "#lit" ).mouseleave(function() {
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+           $(this).fadeTo('slow', 1);
+       });
+
+       $( "#sport" ).mouseenter(function() {
           $("#science_hover").hide();
           $("#art_hover").hide();
           $("#lit_hover").hide();
           $("#sport_hover").show();
           $("#community_hover").hide();
+           $(this).fadeTo('slow', 1);
+       });
 
-
+       $( "#sport" ).mouseleave(function() {
+          $("#science_hover").hide();
+          $("#art_hover").hide();
+          $("#lit_hover").hide();
+          $("#sport_hover").hide();
+          $("#community_hover").hide();
+           $(this).fadeTo('slow', 1);
        });
        
        
