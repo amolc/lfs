@@ -37,15 +37,15 @@ outline: 0;
     font-size: 25px;
     font-family: 'osp-dindin';
     color: #4A4A4A;
-    padding-left: 100px;
+    padding-left: 115px;
     line-height: 1;
     padding-right: 30px;
 }
 .wrap img{
     position: absolute;
     left: 30px;
-    top: 25px;
-    width: 80px;
+    top: 30px;
+    width: 100px;
 }
 
 .programs .second h2 {
