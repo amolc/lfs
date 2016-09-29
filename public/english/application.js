@@ -263,7 +263,7 @@ angular.module('Lfs').controller('MainController', [
         }
 
         $scope.downloadUrl = downloadUrl;
-
+        $scope.pdfURL = pdfURL;
 
     }
 ]);
