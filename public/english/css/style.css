@@ -21,6 +21,11 @@ outline: 0;
 .jumbotron .container{
     position: relative;
 }
+.navbar-brand>img {
+    display: block;
+    width: 430px;
+    margin-top: 20px;
+}
 .wrap {
     display: table;
     height: 120px;
